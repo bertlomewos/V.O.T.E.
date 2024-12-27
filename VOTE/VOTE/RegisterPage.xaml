@@ -7,6 +7,76 @@
         mc:Ignorable="d"
         Title="RegisterPage" Height="450" Width="800">
     <Grid>
-        
+        <Grid x:Name="UserPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- Email input area -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Email" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+
+                <!-- Password input area -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Password" VerticalAlignment="Center" Margin="5"/>
+                    <PasswordBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+
+                <!-- Role selection (ComboBox) -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Role" VerticalAlignment="Center" Margin="5"/>
+                    <ComboBox x:Name="RoleComboBox" Width="200" HorizontalAlignment="Center" Margin="5">
+                        <ComboBoxItem Content="Voter"/>
+                        <ComboBoxItem Content="Party"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Next Button -->
+                <Button Content="Next" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click"/>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="VoterPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- Email input area -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="First Name" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Last Name" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Location" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="ID Number" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+                
+                <!-- Next Button -->
+                <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5"/>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="PartyPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- Email input area -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Leader" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+
+                <!-- Password input area -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Password" VerticalAlignment="Center" Margin="5"/>
+                    <PasswordBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+
+                <!-- Next Button -->
+                <Button Content="Next" Width="100" HorizontalAlignment="Center" Margin="5"/>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>
