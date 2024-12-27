@@ -22,12 +22,15 @@ namespace VOTE
             {
                 UserPanel.Visibility = Visibility.Hidden;
                 VoterPanel.Visibility = Visibility.Visible;
+
             }
             else if(selectedRole == "Party")
             {
                 UserPanel.Visibility = Visibility.Hidden;
                 PartyPanel.Visibility = Visibility.Visible;
+
             }
+
         }
 
         private byte[] legalCertificationData;
@@ -47,5 +50,10 @@ namespace VOTE
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            FirstPanel.Visibility = Visibility.Hidden;
+            SecondPanel.Visibility = Visibility.Visible;
+        }
     }
 }
