@@ -8,11 +8,11 @@
         Title="PartyPage" Height="450" Width="800">
     <Grid>
         <!-- Menu Bar -->
-        <Menu VerticalAlignment="Top" HorizontalAlignment="Stretch">
-            <MenuItem Header="Home" />
-            <MenuItem Header="Main Page" />
-            <MenuItem Header="Events" />
-            <MenuItem Header="Profile" />
+        <Menu VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="25">
+            <MenuItem Header="Home" Height="25"/>
+            <MenuItem Header="Main Page" Height="25"/>
+            <MenuItem Header="Events" Height="25"/>
+            <MenuItem Header="Profile" Height="25"/>
         </Menu>
     </Grid>
 </Window>
