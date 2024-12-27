@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using VOTE.Model;
 
 namespace VOTE
 {
@@ -24,13 +25,12 @@ namespace VOTE
                 VoterPanel.Visibility = Visibility.Visible;
 
             }
-            else if(selectedRole == "Party")
+            else if (selectedRole == "Party")
             {
                 UserPanel.Visibility = Visibility.Hidden;
                 PartyPanel.Visibility = Visibility.Visible;
 
             }
-
         }
 
         private byte[] legalCertificationData;
@@ -54,6 +54,12 @@ namespace VOTE
         {
             FirstPanel.Visibility = Visibility.Hidden;
             SecondPanel.Visibility = Visibility.Visible;
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            User user = new Voter(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), NID.Text, fname.Text, lname.Text, loc.Text);
         }
     }
 }

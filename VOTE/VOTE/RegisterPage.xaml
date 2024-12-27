@@ -12,13 +12,13 @@
                 <!-- Email input area -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Content="Email" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBox x:Name="Email" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
 
                 <!-- Password input area -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Content="Password" VerticalAlignment="Center" Margin="5"/>
-                    <PasswordBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                    <PasswordBox x:Name="Password" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -43,22 +43,22 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Content="First Name" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBox x:Name="fname" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Content="Last Name" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBox x:Name="lname" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Content="Location" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="201" Margin="5"/>
+                    <TextBox x:Name="loc" Width="201" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Content="ID Number" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBox x:Name="NID" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
 
-                <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5"/>
+                <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click_2"/>
             </StackPanel>
         </Grid>
         <Grid x:Name="PartyPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
