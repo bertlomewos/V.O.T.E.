@@ -35,7 +35,6 @@
                     </ComboBox>
                 </StackPanel>
 
-                <!-- Next Button -->
                 <Button Content="Next" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click"/>
             </StackPanel>
         </Grid>
@@ -64,7 +63,7 @@
         </Grid>
         <Grid x:Name="PartyPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
             
-            <Grid x:Name="FirstPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
+            <Grid x:Name="FirstPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Party Name" VerticalAlignment="Center" Margin="5"/>
@@ -91,7 +90,7 @@
                 
             </StackPanel>
             </Grid>
-            <Grid x:Name="SecondPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+            <Grid x:Name="SecondPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Membership Criteria" VerticalAlignment="Center" Margin="5"/>
@@ -113,6 +112,12 @@
                         <Label Content="Funding Sources" VerticalAlignment="Center" Margin="5"/>
                         <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="Legal Certification" VerticalAlignment="Center" Margin="5"/>
+                        <Button Content="Upload" Width="100" HorizontalAlignment="Center" Margin="5" Click="UploadButton_Click"/>
+                        <TextBlock x:Name="FileNameTextBlock" Text="No file selected" VerticalAlignment="Center" Margin="5"/>
+                    </StackPanel>
+
 
                     <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5"/>
 

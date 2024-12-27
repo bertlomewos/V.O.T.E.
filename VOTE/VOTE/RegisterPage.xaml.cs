@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -28,5 +29,23 @@ namespace VOTE
                 PartyPanel.Visibility = Visibility.Visible;
             }
         }
+
+        private byte[] legalCertificationData;
+
+        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Open file dialog to select a file
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                // Read the file into a byte array
+                string filePath = openFileDialog.FileName;
+                FileNameTextBlock.Text = System.IO.Path.GetFileName(filePath);
+
+                legalCertificationData = File.ReadAllBytes(filePath); // Store file as byte array
+            }
+        }
+
     }
 }
