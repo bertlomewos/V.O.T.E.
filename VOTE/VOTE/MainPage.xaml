@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="MainPage" Height="450" Width="800">
     <Grid>
-        
+        <!-- Define Grid with two columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <!-- Menu Column -->
+            <ColumnDefinition Width="*" />
+            <!-- Content Column -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu on the left side -->
+        <StackPanel Grid.Column="0" Background="Black" VerticalAlignment="Stretch">
+            <Button Content="Party's" Foreground="Black" FontWeight="Bold" FontSize="16" Margin="10" Background="white" BorderBrush="white" Width="78" />
+            <Button Content="Events" Foreground="Black" FontWeight="Bold" FontSize="16" Margin="10" Background="white" BorderBrush="Black" />
+        </StackPanel>
+
+        <!-- Content area -->
+        <Grid Grid.Column="1">
+            <!-- Add content here -->
+        </Grid>
     </Grid>
 </Window>
