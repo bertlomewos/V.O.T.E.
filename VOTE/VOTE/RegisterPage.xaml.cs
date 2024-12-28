@@ -50,7 +50,7 @@ namespace VOTE
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Next(object sender, RoutedEventArgs e)
         {
             FirstPanel.Visibility = Visibility.Hidden;
             SecondPanel.Visibility = Visibility.Visible;
@@ -65,6 +65,11 @@ namespace VOTE
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             User user = new Party(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), PartyName.Text, PartyAcronym.Text, FoundedDate.Text, HeadquartersLocation.Text, PartyLeader.Text, MembershipCriteria.Text, PartyInfo.Text, int.Parse(MembershipSize.Text), ElectionParticipation.Text, FundingSources.Text, legalCertificationData);
+        }
+
+        private void previous(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

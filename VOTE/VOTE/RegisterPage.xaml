@@ -89,10 +89,12 @@
                         <Label Content="PartyLeader" VerticalAlignment="Center" Margin="5"/>
                         <TextBox x:Name="PartyLeader" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
-                
-                <Button  Content="Next" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click_1"/>
-                
-            </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Previous" Width="100" HorizontalAlignment="Left" Margin="30" Click="previous"/>
+                        <Button Content="Next" Width="100" HorizontalAlignment="Right" Margin="30" Click="Next"/>
+                    </StackPanel>
+
+                </StackPanel>
             </Grid>
             <Grid x:Name="SecondPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

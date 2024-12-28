@@ -28,7 +28,6 @@ namespace VOTE.Model
             }
         }
 
-
         public void InsertINtoVoters(string firstName, string lastName, string location, string NID)
         {
             string query = "INSERT INTO voters (VoterFName, VoterLName, VoterLocation, IDNum, UserID) VALUES (@VoterFName, @VoterLName, @VoterLocation, @IDNum, @UserID);";
