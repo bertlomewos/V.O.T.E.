@@ -14,5 +14,7 @@
             <MenuItem Header="Events" Height="25"/>
             <MenuItem Header="Profile" Height="25"/>
         </Menu>
+
     </Grid>
 </Window>
+    
