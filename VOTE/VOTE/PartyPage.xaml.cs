@@ -23,5 +23,10 @@ namespace VOTE
         {
             InitializeComponent();
         }
+
+        private void Profile(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

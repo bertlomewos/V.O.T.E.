@@ -9,12 +9,84 @@
     <Grid>
         <!-- Menu Bar -->
         <Menu VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="25">
-            <MenuItem Header="Home" Height="25"/>
+            <MenuItem Header="Profile" Height="25" Click="Profile"/>
+            <MenuItem Header="DashBoard" Height="25"/>
             <MenuItem Header="Main Page" Height="25"/>
             <MenuItem Header="Events" Height="25"/>
-            <MenuItem Header="Profile" Height="25"/>
+            <MenuItem Header="LogOut" Height="25"/>
         </Menu>
 
+        <!-- Profile Panel -->
+        <Grid Name="ProfilePanel" Margin="10,35,10,10">
+            <!-- Image on the Top Right Corner -->
+            <Image Source="/images (2).jpeg" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="100" Margin="0,0,10,0"/>
+
+            <!-- Info Panel on the Left Side -->
+            <Grid Name="InfoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Labels and Values -->
+                <Label Grid.Row="0" Grid.Column="0" Content="Party Name:" FontWeight="Bold"/>
+                <Label Grid.Row="0" Grid.Column="1" Content="[Party Name]"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Party Acronym:" FontWeight="Bold"/>
+                <Label Grid.Row="1" Grid.Column="1" Content="[Party Acronym]"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Founded Date:" FontWeight="Bold"/>
+                <Label Grid.Row="2" Grid.Column="1" Content="[Founded Date]"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="Headquarters Location:" FontWeight="Bold"/>
+                <Label Grid.Row="3" Grid.Column="1" Content="[Location]"/>
+
+                <Label Grid.Row="4" Grid.Column="0" Content="Leader:" FontWeight="Bold"/>
+                <Label Grid.Row="4" Grid.Column="1" Content="[Leader Name]"/>
+            </Grid>
+
+            <!-- More Info Panel on the Bottom -->
+            <Grid Name="MoreInfo" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,60,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Labels and Values -->
+                <Label Grid.Row="0" Grid.Column="0" Content="Membership Criteria:" FontWeight="Bold"/>
+                <Label Grid.Row="0" Grid.Column="1" Content="[Criteria]"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Party Info:" FontWeight="Bold"/>
+                <Label Grid.Row="1" Grid.Column="1" Content="[Party Info]"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Membership Size:" FontWeight="Bold"/>
+                <Label Grid.Row="2" Grid.Column="1" Content="[Size]"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="Election Participation:" FontWeight="Bold"/>
+                <Label Grid.Row="3" Grid.Column="1" Content="[Participation Info]"/>
+
+                <Label Grid.Row="4" Grid.Column="0" Content="Funding Resource:" FontWeight="Bold"/>
+                <Label Grid.Row="4" Grid.Column="1" Content="[Funding Info]"/>
+
+                <Label Grid.Row="5" Grid.Column="0" Content="Legal Certification:" FontWeight="Bold"/>
+                <Label Grid.Row="5" Grid.Column="1" Content="[Certification Info]"/>
+
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
-    
