@@ -71,23 +71,23 @@
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Party Name" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="PartyName" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Party Acronym" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="PartyAcronym" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Founded Date" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="FoundedDate" Width="200" HorizontalAlignment="Center" Margin="5"/>
                     </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Headquarters Location" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="HeadquartersLocation" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="PartyLeader" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="PartyLeader" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 
                 <Button  Content="Next" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click_1"/>
@@ -98,23 +98,23 @@
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Membership Criteria" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="MembershipCriteria" Width="200" HorizontalAlignment="Center" Margin="5"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="PartyInfo" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="PartyInfo" Width="200" HorizontalAlignment="Center" Margin="5"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Membership Size" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="MembershipSize" Width="200" HorizontalAlignment="Center" Margin="5"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Election Participation" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="ElectionParticipation" Width="200" HorizontalAlignment="Center" Margin="5"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Funding Sources" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox Width="200" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="FundingSources" Width="200" HorizontalAlignment="Center" Margin="5"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Legal Certification" VerticalAlignment="Center" Margin="5"/>
@@ -123,7 +123,7 @@
                     </StackPanel>
 
 
-                    <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5"/>
+                    <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click_3"/>
 
                 </StackPanel>
             </Grid>

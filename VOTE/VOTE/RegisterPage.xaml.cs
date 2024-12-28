@@ -61,5 +61,10 @@ namespace VOTE
         {
             User user = new Voter(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), NID.Text, fname.Text, lname.Text, loc.Text);
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            User user = new Party(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), PartyName.Text, PartyAcronym.Text, FoundedDate.Text, HeadquartersLocation.Text, PartyLeader.Text, MembershipCriteria.Text, PartyInfo.Text, int.Parse(MembershipSize.Text), ElectionParticipation.Text, FundingSources.Text, legalCertificationData);
+        }
     }
 }

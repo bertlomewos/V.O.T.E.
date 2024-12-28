@@ -25,7 +25,7 @@ namespace VOTE.Model
 
         }
 
-        public void assign()
+        public virtual void assign()
         {
             sd.InsertINtoUsers(Email, Password, Role);
             MessageBox.Show("User Registered Successfully");

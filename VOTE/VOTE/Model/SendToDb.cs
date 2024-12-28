@@ -44,5 +44,27 @@ namespace VOTE.Model
                 command.ExecuteNonQuery();
             }
         }
+        public void InsertIntoParty(string partyName, string partyAcronym, string foundedDate, string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize, string electionParticipation, string fundingSources, byte[] legalCertification)
+        {
+            string query = "INSERT INTO parties (PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification, UserID) VALUES (@PartyName, @PartyAcronym, @FoundedDate, @HeadquartersLocation, @PartyLeader, @MembershipCriteria, @PartyInfo, @MembershipSize, @ElectionParticipation, @FundingSources, @LegalCertification , @UserID);";
+            using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
+            {
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@PartyName", partyName);
+                command.Parameters.AddWithValue("@PartyAcronym", partyAcronym);
+                command.Parameters.AddWithValue("@FoundedDate", foundedDate);
+                command.Parameters.AddWithValue("@HeadquartersLocation", headquartersLocation);
+                command.Parameters.AddWithValue("@PartyLeader", partyLeader);
+                command.Parameters.AddWithValue("@MembershipCriteria", membershipCriteria);
+                command.Parameters.AddWithValue("@PartyInfo", partyInfo);
+                command.Parameters.AddWithValue("@MembershipSize", membershipSize);
+                command.Parameters.AddWithValue("@ElectionParticipation", electionParticipation);
+                command.Parameters.AddWithValue("@FundingSources", fundingSources);
+                command.Parameters.AddWithValue("@LegalCertification", legalCertification);
+                command.Parameters.AddWithValue("@UserID", userId);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
