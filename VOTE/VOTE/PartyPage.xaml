@@ -19,7 +19,7 @@
         <!-- Profile Panel -->
         <Grid Name="ProfilePanel" Margin="10,35,10,10">
             <!-- Image on the Top Right Corner -->
-            <Image Source="/images (2).jpeg" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="100" Margin="0,0,10,0"/>
+            <Image Source="/image_2024-12-21_21-27-57.png" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="100" Margin="0,0,10,0"/>
 
             <!-- Info Panel on the Left Side -->
             <Grid Name="InfoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0">

@@ -14,7 +14,6 @@ namespace VOTE.Model
     internal class Dbconn
     {
         public const string connectionString = "Server=localhost;Database=voting_app;Uid=root;Pwd=;";
-        static int userId;
 
     }
 
