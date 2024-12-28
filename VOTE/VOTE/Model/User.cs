@@ -15,7 +15,7 @@ namespace VOTE.Model
         public string Password { get; set; }
         public string Role { get; set; }
 
-        Dbconn dbconn = new Dbconn();
+        SendToDb sd = new SendToDb();
         public User(string email, string password, string role)
         {
             Email = email;
@@ -27,7 +27,7 @@ namespace VOTE.Model
 
         public void assign()
         {
-            dbconn.InsertINtoUsers(Email, Password, Role);
+            sd.InsertINtoUsers(Email, Password, Role);
             MessageBox.Show("User Registered Successfully");
         }
 

@@ -14,7 +14,7 @@ namespace VOTE.Model
         public string LName { get; set; }
         public string Location { get; set; }
 
-        Dbconn dbconn = new Dbconn();
+        SendToDb sd = new SendToDb();
         public Voter(string email, string password, string role, string NID, string fName, string lName, string location) : base(email, password, role)
         {
             ID = NID;
@@ -26,7 +26,7 @@ namespace VOTE.Model
 
         public void assignVoter()
         {
-            dbconn.InsertINtoVoters(FName, LName, Location, ID);
+            sd.InsertINtoVoters(FName, LName, Location, ID);
             MessageBox.Show("Voter Registered Successfully");
         }
     }
