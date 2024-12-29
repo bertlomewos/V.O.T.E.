@@ -44,7 +44,7 @@ namespace VOTE
                     pp.Show();
                     this.Close();
                 }
-                else if(role == "Voter") { 
+                else if(role == "voter") { 
                     MainPage mainPage = new MainPage();
                     mainPage.Show();
                     this.Close();
