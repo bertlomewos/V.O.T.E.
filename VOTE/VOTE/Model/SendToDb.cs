@@ -23,7 +23,7 @@ namespace VOTE.Model
                 connection.Open();
 
                 // Execute the command and retrieve the last inserted ID
-                userId = Convert.ToInt32(command.ExecuteScalar());
+                userId = Convert.ToInt32(command.ExecuteScalar());// single value
                 return userId; // Return the UserID
             }
         }
@@ -40,13 +40,13 @@ namespace VOTE.Model
                 command.Parameters.AddWithValue("@IDNum", NID);
                 command.Parameters.AddWithValue("@UserID", userId);
                 connection.Open();
-                command.ExecuteNonQuery();
+                command.ExecuteNonQuery(); // to insert
             }
         }
         public void InsertIntoParty(string partyName, string partyAcronym, string foundedDate, string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize, string electionParticipation, string fundingSources, byte[] legalCertification)
         {
             string query = "INSERT INTO parties (PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification, UserID) VALUES (@PartyName, @PartyAcronym, @FoundedDate, @HeadquartersLocation, @PartyLeader, @MembershipCriteria, @PartyInfo, @MembershipSize, @ElectionParticipation, @FundingSources, @LegalCertification , @UserID);";
-            using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
+            using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))// automatically closes the connection
             {
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@PartyName", partyName);

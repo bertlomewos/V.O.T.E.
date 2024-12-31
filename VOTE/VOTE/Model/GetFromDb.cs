@@ -10,7 +10,7 @@ namespace VOTE.Model
 {
     class GetFromDb
     {
-
+        // FIX the way this is accessing stuff
         public (bool exists, string role) GetfromUsers(string userID, string password)
         {
             string query = "SELECT Password, Role FROM users WHERE UserID = @UserID";
@@ -20,12 +20,12 @@ namespace VOTE.Model
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserID", userID);
                 connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();
+                MySqlDataReader reader = command.ExecuteReader(); //[Barte] data provids fast forward-only dara froma data source
 
                 if (reader.Read())
                 {
                     string storedPassword = reader["Password"].ToString();
-                    string role = reader["Role"].ToString();
+                    string role = reader["Role"].ToString(); 
 
                     if (password == storedPassword && role != null)
                     {
