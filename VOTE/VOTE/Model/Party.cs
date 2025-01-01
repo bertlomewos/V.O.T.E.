@@ -8,7 +8,7 @@ namespace VOTE.Model
 {
     internal class Party : User
     {
-        public string partyName {  get; set; }
+        public string PartyName {  get; set; }
         public string PartyAcronym { get; set; }
         public string FoundedDate { get; set; }
         public string HeadquartersLocation { get; set; }
@@ -21,12 +21,12 @@ namespace VOTE.Model
         public byte[] LegalCertification { get; set; }
 
         SendToDb sd = new SendToDb();
-        public Party(string email, string password, string role, string partyName, string partyAcronym, string foundedDate,
+     public Party(string email, string password, string role, string PartyName, string partyAcronym, string foundedDate,
     string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize,
     string electionParticipation, string fundingSources, byte[] legalCertification)
     : base(email, password, role)
         {
-            this.partyName = partyName;
+            this.PartyName = PartyName;
             this.PartyAcronym = partyAcronym;
             this.FoundedDate = foundedDate;
             this.HeadquartersLocation = headquartersLocation;
@@ -39,12 +39,12 @@ namespace VOTE.Model
             this.LegalCertification = legalCertification;
 
 
-            assignParty();
+            //assignParty();
         }
 
         public void assignParty()
         {
-            sd.InsertIntoParty(partyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification);
+            sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification);
         }
 
     }

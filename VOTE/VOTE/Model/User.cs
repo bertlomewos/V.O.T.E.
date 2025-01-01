@@ -21,7 +21,7 @@ namespace VOTE.Model
             Email = email;
             Password = password;
             Role = role;
-            assign();
+            //assign();
 
         }
 

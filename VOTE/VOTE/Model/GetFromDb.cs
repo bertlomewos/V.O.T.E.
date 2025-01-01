@@ -38,66 +38,82 @@ namespace VOTE.Model
             return (false, string.Empty);
         }
 
+       public List<string> partyList = new List<string>();
 
-
-        public static string PName;
-        public static string PAcronym;
-        //public static string FoundedDate;
-        public static string HeadquartersLocation;
-        public static string PartyLeader;
-        public static string MembershipCriteria;
-        public static string PartyInfo;
-        public static int MembershipSize;
-        public static string ElectionParticipation;
-        public static string FundingSources;
-        //public static bool LegalCertification;
-
-        public void GetParties(string UID)
+        public void GetParties(string  UID)
         {
+
             string query = "SELECT PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification, UserID FROM parties WHERE UserID = @UserID";
+
             using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
             {
                 MySqlCommand command = new MySqlCommand(query, connection);
-                MessageBox.Show(UID);
                 command.Parameters.AddWithValue("@UserID", UID);
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                    // Read the data
-                    while (reader.Read())
-                    {
-                        string partyName = reader["PartyName"].ToString();
-                        string partyAcronym = reader["PartyAcronym"].ToString();
-                        //DateTime foundedDate = Convert.ToDateTime(reader["FoundedDate"]);
-                        string headquartersLocation = reader["HeadquartersLocation"].ToString();
-                        string partyLeader = reader["PartyLeader"].ToString();
-                        string membershipCriteria = reader["MembershipCriteria"].ToString();
-                        string partyInfo = reader["PartyInfo"].ToString();
-                        int membershipSize = Convert.ToInt32(reader["MembershipSize"]);
-                        string electionParticipation = reader["ElectionParticipation"].ToString();
-                        string fundingSources = reader["FundingSources"].ToString();
-                        //bool legalCertification = Convert.ToBoolean(reader["LegalCertification"]);
-                        string userID = reader["UserID"].ToString();
+                // Read the data
+                while (reader.Read())
+                {
+                    string partyName = reader["PartyName"].ToString();
+                    string partyAcronym = reader["PartyAcronym"].ToString();
+                    string headquartersLocation = reader["HeadquartersLocation"].ToString();
+                    string partyLeader = reader["PartyLeader"].ToString();
+                    string membershipCriteria = reader["MembershipCriteria"].ToString();
+                    string partyInfo = reader["PartyInfo"].ToString();
+                    int membershipSize = Convert.ToInt32(reader["MembershipSize"]);
+                    string electionParticipation = reader["ElectionParticipation"].ToString();
+                    string fundingSources = reader["FundingSources"].ToString();
 
-                        // Add the party data to the list
-                        MessageBox.Show(partyName);
-                        
-                    PName = partyName;
-                    PAcronym = partyAcronym;
-                    //FoundedDate = foundedDate;
-                    HeadquartersLocation = headquartersLocation;
-                    PartyLeader = partyLeader;
-                    MembershipCriteria = membershipCriteria;
-                    PartyInfo = partyInfo;
-                    MembershipSize = membershipSize;
-                    ElectionParticipation = electionParticipation;
-                    FundingSources = fundingSources;
-                    //LegalCertification = legalCertification;
-
-
+                    partyList.AddRange(new List<string>
+                                        {
+                                            partyName,
+                                            partyAcronym,
+                                            headquartersLocation,
+                                            partyLeader,
+                                            membershipCriteria,
+                                            partyInfo,
+                                            electionParticipation,
+                                            fundingSources
+                                        });
                 }
             }
         }
 
+        public List<Party> partyListForMainPage = new List<Party>();
+        public void GetPartiesForMainPage()
+        {
+            string query = "SELECT * FROM parties";
+
+            using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
+            {
+                MySqlCommand command = new MySqlCommand(query, connection);
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                // Read the data
+                while (reader.Read())
+                {
+                    Party party = new Party(
+                        email: "", // Adjust as necessary
+                        password: "", // Adjust as necessary
+                        role: "", // Adjust as necessary
+                        PartyName: reader["PartyName"].ToString(),
+                        partyAcronym: reader["PartyAcronym"].ToString(),
+                        foundedDate: "",
+                        headquartersLocation: reader["HeadquartersLocation"].ToString(),
+                        partyLeader: reader["PartyLeader"].ToString(),
+                        membershipCriteria: reader["MembershipCriteria"].ToString(),
+                        partyInfo: reader["PartyInfo"].ToString(),
+                        membershipSize: Convert.ToInt32(reader["MembershipSize"]),
+                        electionParticipation: reader["ElectionParticipation"].ToString(),
+                        fundingSources: reader["FundingSources"].ToString(),
+                        legalCertification: null // Handle legal certification as needed
+                    );
+
+                    partyListForMainPage.Add(party);
+                }
+            }
+        }
     }
 }

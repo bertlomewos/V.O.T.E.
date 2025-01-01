@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using VOTE.Model;
 
 namespace VOTE
 {
@@ -22,6 +23,9 @@ namespace VOTE
         public MainPage()
         {
             InitializeComponent();
+            GetFromDb getFromDb = new GetFromDb();
+            getFromDb.GetPartiesForMainPage();
+            PartyDataGrid.ItemsSource = getFromDb.partyListForMainPage;
         }
     }
 }

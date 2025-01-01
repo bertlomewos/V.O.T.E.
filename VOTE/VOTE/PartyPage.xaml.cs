@@ -20,20 +20,22 @@ namespace VOTE
     /// </summary>
     public partial class PartyPage : Window
     {
+        public static string UID;
         public PartyPage()
         {
             InitializeComponent(); 
             GetFromDb gd = new GetFromDb();
 
-            PartyNameLabel.Content = GetFromDb.PName;
-            PartyAcronymLabel.Content = GetFromDb.PAcronym;
-            HeadquartersLocationLabel.Content = GetFromDb.HeadquartersLocation;
-            PartyLeaderLabel.Content = GetFromDb.PartyLeader;
-            MembershipCriteriaLabel.Content = GetFromDb.MembershipCriteria;
-            PartyInfoLabel.Content = GetFromDb.PartyInfo;
-            MembershipSizeLabel.Content = GetFromDb.MembershipSize;
-            ElectionParticipationLabel.Content = GetFromDb.ElectionParticipation;
-            FundingSourcesLabel.Content = GetFromDb.FundingSources;
+            gd.GetParties(UID);
+            PartyNameLabel.Content = gd.partyList[0];
+            PartyAcronymLabel.Content = gd.partyList[1];
+            HeadquartersLocationLabel.Content = gd.partyList[2];
+            PartyLeaderLabel.Content = gd.partyList[3];
+            MembershipCriteriaLabel.Content = gd.partyList[4];
+            PartyInfoLabel.Content = gd.partyList[5];
+            ElectionParticipationLabel.Content = gd.partyList[6];
+            FundingSourcesLabel.Content = gd.partyList[7];
+
         }
 
         private void Profile(object sender, RoutedEventArgs e)

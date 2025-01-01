@@ -31,10 +31,12 @@ namespace VOTE
             string Pass = pass.Password;
 
             GetFromDb gd = new GetFromDb();
-
+            PartyPage.UID = UID;
 
             var (exists, role) = gd.GetfromUsers(UID, Pass);
             gd.GetParties(UID);
+
+
 
             if (exists)
             {
