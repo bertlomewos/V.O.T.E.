@@ -39,6 +39,7 @@ namespace VOTE.Model
             this.LegalCertification = legalCertification;
 
 
+
             //assignParty();
         }
 
