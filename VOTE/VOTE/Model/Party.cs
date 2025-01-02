@@ -19,7 +19,6 @@ namespace VOTE.Model
         public string ElectionParticipation { get; set; }
         public string FundingSources { get; set; }
         public byte[] LegalCertification { get; set; }
-        public int VoteCount { get; set; }
 
         SendToDb sd = new SendToDb();
         public Party(string email, string password, string role, string PartyName, string partyAcronym, DateTime? foundedDate,
@@ -38,7 +37,6 @@ namespace VOTE.Model
             this.ElectionParticipation = electionParticipation;
             this.FundingSources = fundingSources;
             this.LegalCertification = legalCertification;
-
 
 
             //assignParty();

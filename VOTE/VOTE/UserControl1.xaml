@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:VOTE"
              mc:Ignorable="d" 
              Height="Auto" Width="300" d:DesignHeight="610.478">
-    <Grid Margin="0,0,0,-14">
+    <Grid Margin="0,0,0,10">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -18,6 +18,11 @@
         <StackPanel Background="LightBlue" Grid.Row="0">
             <Image Name="PartyImage" Height="120" VerticalAlignment="Top" />
         </StackPanel>
+
+        <!--<StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+            <Label Content="Vote Count: " FontWeight="Bold" Width="120"/>
+            <Label Name="VoteCountLabel"/>
+        </StackPanel>-->
 
         <StackPanel Background="Gray" VerticalAlignment="Top" Margin="10,10,10,0" Grid.Row="1">
             <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
@@ -39,6 +44,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="2">
             <Label Content="More..." Width="100" Height="30" Margin="5,0,0,0" MouseDoubleClick="MoreButton_Click"/>
             <Button Content="Vote" Width="100" Height="30" Click="Button_Click"/>
+            <Label Name="VoteCountLabel" Margin="30,0,0,0" Width="60" Height="30"/>
         </StackPanel>
 
         <StackPanel Background="Gray" Name="AdditionalInfoPanel" VerticalAlignment="Top" Visibility="Visible" Margin="10,15,10,0" Grid.Row="3" Height="Auto">

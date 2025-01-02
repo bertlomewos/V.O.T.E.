@@ -21,14 +21,27 @@ namespace VOTE
     /// </summary>
     public partial class UserControl1 : UserControl
     {
+        private VoteManage voteManage;
+        private int PartyID;
         public UserControl1()
         {
             InitializeComponent();
-        }
+            voteManage = new VoteManage(); 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        }
+        
+        private void UpdateVoteCount()
         {
-            MessageBox.Show($"You voted for {PartyNameLabel.Content}!");
+            int newVoteCount = voteManage.GetVoteCount(PartyID);
+            VoteCountLabel.Content = newVoteCount.ToString();
+        }
+        public void InitializeControl(int partyID, string partyName)
+        {
+            PartyID = partyID;
+            PartyNameLabel.Content = partyName;
+
+            // Fetch the initial vote count
+            UpdateVoteCount();
         }
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +55,15 @@ namespace VOTE
                 AdditionalInfoPanel.Visibility = Visibility.Collapsed;
                 ((Label)sender).Content = "More...";
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+          //  Console.WriteLine("Button clicked!");
+
+            voteManage.IncrementVoteCount(PartyID);
+
+            UpdateVoteCount();
         }
     }
 }

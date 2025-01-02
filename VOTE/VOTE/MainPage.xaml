@@ -28,7 +28,7 @@
         </ScrollViewer>
 
         <!-- Content area for events -->
-        <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Margin="60,24,0,0" Name="EventsScrollViewer" Visibility="Collapsed">
+        <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Margin="60,40,0,0" Name="EventsScrollViewer" Visibility="Collapsed">
             <WrapPanel Name="EventsContainer" Orientation="Vertical" HorizontalAlignment="Left" />
         </ScrollViewer>
 
