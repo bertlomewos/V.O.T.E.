@@ -8,9 +8,9 @@ namespace VOTE.Model
 {
     internal class Party : User
     {
-        public string PartyName {  get; set; }
+        public string PartyName { get; set; }
         public string PartyAcronym { get; set; }
-        public string FoundedDate { get; set; }
+        public DateTime? FoundedDate { get; set; }
         public string HeadquartersLocation { get; set; }
         public string PartyLeader { get; set; }
         public string MembershipCriteria { get; set; }
@@ -19,12 +19,13 @@ namespace VOTE.Model
         public string ElectionParticipation { get; set; }
         public string FundingSources { get; set; }
         public byte[] LegalCertification { get; set; }
+        public int VoteCount { get; set; }
 
         SendToDb sd = new SendToDb();
-     public Party(string email, string password, string role, string PartyName, string partyAcronym, string foundedDate,
-    string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize,
-    string electionParticipation, string fundingSources, byte[] legalCertification)
-    : base(email, password, role)
+        public Party(string email, string password, string role, string PartyName, string partyAcronym, DateTime? foundedDate,
+       string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize,
+       string electionParticipation, string fundingSources, byte[] legalCertification)
+       : base(email, password, role)
         {
             this.PartyName = PartyName;
             this.PartyAcronym = partyAcronym;
@@ -45,7 +46,7 @@ namespace VOTE.Model
 
         public void assignParty()
         {
-            sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification);
+            sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate?.ToString(), HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification);
         }
 
     }

@@ -78,9 +78,9 @@
                         <TextBox x:Name="PartyAcronym" Width="200" HorizontalAlignment="Center" Margin="5"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Founded Date" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="FoundedDate" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                    </StackPanel>
+                        <Label Content="Founded Date:" VerticalAlignment="Center" Margin="5" />
+                        <DatePicker x:Name="FoundedDate" Width="200" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="Headquarters Location" VerticalAlignment="Center" Margin="5"/>
                         <TextBox x:Name="HeadquartersLocation" Width="200" HorizontalAlignment="Center" Margin="5"/>

@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="VOTE.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VOTE"
+             mc:Ignorable="d" 
+             Height="Auto" Width="300" d:DesignHeight="610.478">
+    <Grid Margin="0,0,0,-14">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="LightBlue" Grid.Row="0">
+            <Image Name="PartyImage" Height="120" VerticalAlignment="Top" />
+        </StackPanel>
+
+        <StackPanel Background="Gray" VerticalAlignment="Top" Margin="10,10,10,0" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Party Name: " FontWeight="Bold" Width="120"/>
+                <Label Name="PartyNameLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Party Acronym: " FontWeight="Bold" Width="120"/>
+                <Label Name="PartyAcronymLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Founded Date: " FontWeight="Bold" Width="120"/>
+                <Label Name="FoundedDateLabel"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="2">
+            <Label Content="More..." Width="100" Height="30" Margin="5,0,0,0" MouseDoubleClick="MoreButton_Click"/>
+            <Button Content="Vote" Width="100" Height="30" Click="Button_Click"/>
+        </StackPanel>
+
+        <StackPanel Background="Gray" Name="AdditionalInfoPanel" VerticalAlignment="Top" Visibility="Visible" Margin="10,15,10,0" Grid.Row="3" Height="Auto">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Headquarters Location: " FontWeight="Bold" Width="120"/>
+                <Label Name="HeadquartersLocationLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Party Leader: " FontWeight="Bold" Width="120"/>
+                <Label Name="PartyLeaderLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Membership Criteria: " FontWeight="Bold" Width="120"/>
+                <Label Name="MembershipCriteriaLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Party Info: " FontWeight="Bold" Width="120"/>
+                <TextBlock Name="PartyInfoLabel" TextWrapping="Wrap" Width="172" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Membership Size: " FontWeight="Bold" Width="120"/>
+                <Label Name="MembershipSizeLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Election Participation: " FontWeight="Bold" Width="120"/>
+                <Label Name="ElectionParticipationLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Funding Sources: " FontWeight="Bold" Width="120"/>
+                <Label Name="FundingSourcesLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Legal Certification: " FontWeight="Bold" Width="276" Height="103"/>
+                <Image Name="LegalCertificationImage" Height="100" Stretch="Uniform" Margin="0,5,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        </Grid>
+</UserControl>

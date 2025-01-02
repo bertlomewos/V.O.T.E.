@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using VOTE.Model;
+
 
 namespace VOTE.Model
 {
     class GetFromDb
     {
-        // FIX the way this is accessing stuff
         public (bool exists, string role) GetfromUsers(string userID, string password)
         {
             string query = "SELECT Password, Role FROM users WHERE UserID = @UserID";
@@ -20,29 +22,26 @@ namespace VOTE.Model
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserID", userID);
                 connection.Open();
-                MySqlDataReader reader = command.ExecuteReader(); //[Barte] data provids fast forward-only dara froma data source
+                MySqlDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
                 {
                     string storedPassword = reader["Password"].ToString();
-                    string role = reader["Role"].ToString(); 
+                    string role = reader["Role"].ToString();
 
                     if (password == storedPassword && role != null)
                     {
-                        //MessageBox.Show("Login Successful");
                         return (true, role);
-                        
                     }
                 }
             }
             return (false, string.Empty);
         }
 
-       public List<string> partyList = new List<string>();
+        public List<string> partyList = new List<string>();
 
-        public void GetParties(string  UID)
+        public void GetParties(string UID)
         {
-
             string query = "SELECT PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification, UserID FROM parties WHERE UserID = @UserID";
 
             using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
@@ -52,7 +51,6 @@ namespace VOTE.Model
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                // Read the data
                 while (reader.Read())
                 {
                     string partyName = reader["PartyName"].ToString();
@@ -66,54 +64,94 @@ namespace VOTE.Model
                     string fundingSources = reader["FundingSources"].ToString();
 
                     partyList.AddRange(new List<string>
-                                        {
-                                            partyName,
-                                            partyAcronym,
-                                            headquartersLocation,
-                                            partyLeader,
-                                            membershipCriteria,
-                                            partyInfo,
-                                            electionParticipation,
-                                            fundingSources
-                                        });
+                        {
+                            partyName,
+                            partyAcronym,
+                            headquartersLocation,
+                            partyLeader,
+                            membershipCriteria,
+                            partyInfo,
+                            electionParticipation,
+                            fundingSources
+                        });
                 }
             }
         }
 
-        public List<Party> partyListForMainPage = new List<Party>();
-        public void GetPartiesForMainPage()
+        public List<Party> PartiesContainer = new List<Party>();
+
+        public void GetPartiesForMainPage(List<Party> parties, WrapPanel partiesContainer)
         {
-            string query = "SELECT * FROM parties";
-
-            using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
+            try
             {
-                MySqlCommand command = new MySqlCommand(query, connection);
-                connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-
-                // Read the data
-                while (reader.Read())
+                using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
                 {
-                    Party party = new Party(
-                        email: "", // Adjust as necessary
-                        password: "", // Adjust as necessary
-                        role: "", // Adjust as necessary
-                        PartyName: reader["PartyName"].ToString(),
-                        partyAcronym: reader["PartyAcronym"].ToString(),
-                        foundedDate: "",
-                        headquartersLocation: reader["HeadquartersLocation"].ToString(),
-                        partyLeader: reader["PartyLeader"].ToString(),
-                        membershipCriteria: reader["MembershipCriteria"].ToString(),
-                        partyInfo: reader["PartyInfo"].ToString(),
-                        membershipSize: Convert.ToInt32(reader["MembershipSize"]),
-                        electionParticipation: reader["ElectionParticipation"].ToString(),
-                        fundingSources: reader["FundingSources"].ToString(),
-                        legalCertification: null // Handle legal certification as needed
-                    );
+                    connection.Open();
 
-                    partyListForMainPage.Add(party);
+                    string query = "SELECT * FROM Parties";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            PartiesContainer.Clear();
+                            partiesContainer.Children.Clear();
+
+                            while (reader.Read())
+                            {
+                                DateTime? foundedDate = reader["FoundedDate"] == DBNull.Value
+                                ? (DateTime?)null
+                                : Convert.ToDateTime(reader["FoundedDate"]);
+
+                                var party = new Party(
+                                email: "example@example.com", 
+                                password: "password123",      
+                                role: "role",                 
+                                PartyName: reader["PartyName"].ToString(),
+                                partyAcronym: reader["PartyAcronym"].ToString(),
+                                foundedDate: foundedDate,
+                                headquartersLocation: reader["HeadquartersLocation"].ToString(),
+                                partyLeader: reader["PartyLeader"].ToString(),
+                                membershipCriteria: reader["MembershipCriteria"].ToString(),
+                                partyInfo: reader["PartyInfo"].ToString(),
+                                membershipSize: int.Parse(reader["MembershipSize"].ToString()),
+                                electionParticipation: reader["ElectionParticipation"].ToString(),
+                                fundingSources: reader["FundingSources"].ToString(),
+                                legalCertification: null // Replace with actual data if available
+                            );
+
+
+                                parties.Add(party); 
+
+                                // Create a UserControl1 instance and set its data
+                                var partyControl = new UserControl1
+                                {
+                                    PartyNameLabel = { Content = party.PartyName },
+                                    PartyAcronymLabel = { Content = party.PartyAcronym },
+                                    FoundedDateLabel = { Content = reader["FoundedDate"].ToString() },
+                                    HeadquartersLocationLabel = { Content = party.HeadquartersLocation },
+                                    PartyLeaderLabel = { Content = party.PartyLeader },
+                                    MembershipCriteriaLabel = { Content = party.MembershipCriteria },
+                                    PartyInfoLabel = { Text = party.PartyInfo },
+                                    MembershipSizeLabel = { Content = party.MembershipSize },
+                                    ElectionParticipationLabel = { Content = party.ElectionParticipation },
+                                    FundingSourcesLabel = { Content = party.FundingSources },
+                                    //LegalCertificationLabel = { Content = reader["LegalCertification"].ToString() }
+
+                                };
+                                partyControl.Margin = new Thickness(10);
+
+                                partiesContainer.Children.Add(partyControl);
+                            }
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading data from the database: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
     }
 }

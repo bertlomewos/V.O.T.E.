@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using VOTE.Model;
 
+
 namespace VOTE
 {
     /// <summary>
@@ -20,12 +21,34 @@ namespace VOTE
     /// </summary>
     public partial class MainPage : Window
     {
+        private List<Party> Parties = new List<Party>();
+
         public MainPage()
         {
             InitializeComponent();
-            GetFromDb getFromDb = new GetFromDb();
-            getFromDb.GetPartiesForMainPage();
-            PartyDataGrid.ItemsSource = getFromDb.partyListForMainPage;
+
+            var getFromDb = new GetFromDb();
+            getFromDb.GetPartiesForMainPage(Parties, PartiesContainer);
+
+        }
+
+        private void PartyButton_Click(object sender, RoutedEventArgs e)
+        {
+            PartiesScrollViewer.Visibility = Visibility.Collapsed;
+            EventsScrollViewer.Visibility = Visibility.Collapsed;
+
+            PartiesScrollViewer.Visibility = Visibility.Visible;
+
+        }
+
+        private void EventButton_Click(object sender, RoutedEventArgs e)
+        {
+            PartiesScrollViewer.Visibility = Visibility.Collapsed;
+            EventsScrollViewer.Visibility = Visibility.Collapsed;
+
+
+            EventsScrollViewer.Visibility = Visibility.Visible;
+
         }
     }
-}
+    }
