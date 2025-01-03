@@ -47,7 +47,7 @@
             <Label Name="VoteCountLabel" Margin="30,0,0,0" Width="60" Height="30"/>
         </StackPanel>
 
-        <StackPanel Background="Gray" Name="AdditionalInfoPanel" VerticalAlignment="Top" Visibility="Visible" Margin="10,15,10,0" Grid.Row="3" Height="Auto">
+        <StackPanel Background="Gray" Name="AdditionalInfoPanel" VerticalAlignment="Top" Visibility="Collapsed" Margin="10,15,10,0" Grid.Row="3" Height="Auto">
             <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
                 <Label Content="Headquarters Location: " FontWeight="Bold" Width="120"/>
                 <Label Name="HeadquartersLocationLabel"/>
