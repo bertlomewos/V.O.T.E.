@@ -52,6 +52,10 @@ namespace VOTE
                     this.Close();
                 }
             }
+            else
+            {
+                MessageBox.Show("Invalid user ID or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void RegisterPageBtn(object sender, MouseButtonEventArgs e)

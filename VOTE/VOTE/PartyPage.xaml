@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VOTE"
         mc:Ignorable="d"
-        Title="PartyPage" Height="450" Width="800">
+        Title="PartyPage" Height="450" Width="800"
+        WindowState="Maximized">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <!-- Menu Bar -->
-        <Menu VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="25">
+        <Menu VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2">
             <MenuItem Header="Profile" Height="25" Click="Profile"/>
             <MenuItem Header="DashBoard" Height="25"/>
             <MenuItem Header="Main Page" Height="25"/>
@@ -17,43 +22,12 @@
         </Menu>
 
         <!-- Profile Panel -->
-        <Grid Name="ProfilePanel" Margin="10,35,10,10">
+        <Grid Name="ProfilePanel" Margin="10,35,10,10" Grid.ColumnSpan="2">
             <!-- Image on the Top Right Corner -->
             <Image Source="/image_2024-12-21_21-27-57.png" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="100" Margin="0,0,10,0"/>
 
             <!-- Info Panel on the Left Side -->
-            <Grid Name="InfoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Labels and Values -->
-                <Label Grid.Row="0" Grid.Column="0" Content="Party Name:" FontWeight="Bold"/>
-                <Label x:Name="PartyNameLabel" Grid.Row="0" Grid.Column="1" Content="[Party Name]"/>
-
-                <Label Grid.Row="1" Grid.Column="0" Content="Party Acronym:" FontWeight="Bold"/>
-                <Label x:Name="PartyAcronymLabel" Grid.Row="1" Grid.Column="1" Content="[Party Acronym]"/>
-
-                <Label Grid.Row="2" Grid.Column="0" Content="Founded Date:" FontWeight="Bold"/>
-                <Label x:Name="FoundLabel" Grid.Row="2" Grid.Column="1" Content="[Founded Date]"/>
-
-                <Label Grid.Row="3" Grid.Column="0" Content="Headquarters Location:" FontWeight="Bold"/>
-                <Label x:Name="HeadquartersLocationLabel" Grid.Row="3" Grid.Column="1" Content="[Location]"/>
-
-                <Label Grid.Row="4" Grid.Column="0" Content="Leader:" FontWeight="Bold"/>
-                <Label x:Name="PartyLeaderLabel" Grid.Row="4" Grid.Column="1" Content="[Leader Name]"/>
-            </Grid>
-
-            <!-- More Info Panel on the Bottom -->
-            <Grid Name="MoreInfo" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,60,0,0">
+            <Grid Name="InfoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="292">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -61,6 +35,12 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -68,25 +48,62 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Labels and Values -->
-                <Label Grid.Row="0" Grid.Column="0" Content="Membership Criteria:" FontWeight="Bold"/>
-                <Label x:Name="MembershipCriteriaLabel" Grid.Row="0" Grid.Column="1" Content="[Criteria]"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Party Name:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="PartyNameLabel" Grid.Row="0" Grid.Column="1" Content="[Party Name]" Margin="0,5,0,5"/>
 
-                <Label Grid.Row="1" Grid.Column="0" Content="Party Info:" FontWeight="Bold"/>
-                <Label x:Name="PartyInfoLabel" Grid.Row="1" Grid.Column="1" Content="[Party Info]"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Party Acronym:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="PartyAcronymLabel" Grid.Row="1" Grid.Column="1" Content="[Party Acronym]" Margin="0,5,0,5"/>
 
-                <Label Grid.Row="2" Grid.Column="0" Content="Membership Size:" FontWeight="Bold"/>
-                <Label x:Name="MembershipSizeLabel" Grid.Row="2" Grid.Column="1" Content="[Size]"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Founded Date:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="FoundLabel" Grid.Row="2" Grid.Column="1" Content="[Founded Date]" Margin="0,5,0,5"/>
 
-                <Label Grid.Row="3" Grid.Column="0" Content="Election Participation:" FontWeight="Bold"/>
-                <Label x:Name="ElectionParticipationLabel" Grid.Row="3" Grid.Column="1" Content="[Participation Info]"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Headquarters Location:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="HeadquartersLocationLabel" Grid.Row="3" Grid.Column="1" Content="[Location]" Margin="0,5,0,5"/>
 
-                <Label Grid.Row="4" Grid.Column="0" Content="Funding Resource:" FontWeight="Bold"/>
-                <Label x:Name="FundingSourcesLabel" Grid.Row="4" Grid.Column="1" Content="[Funding Info]"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Leader:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="PartyLeaderLabel" Grid.Row="4" Grid.Column="1" Content="[Leader Name]" Margin="0,5,0,5"/>
 
-                <Label Grid.Row="5" Grid.Column="0" Content="Legal Certification:" FontWeight="Bold"/>
-                <Label x:Name="CretificationLabel" Grid.Row="5" Grid.Column="1" Content="[Certification Info]"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="Membership Criteria:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="MembershipCriteriaLabel" Grid.Row="5" Grid.Column="1" Content="[Criteria]" Margin="0,5,0,5"/>
+
+                <Label Grid.Row="6" Grid.Column="0" Content="Party Info:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="PartyInfoLabel" Grid.Row="6" Grid.Column="1" Content="[Party Info]" Margin="0,5,0,5"/>
+
+                <Label Grid.Row="7" Grid.Column="0" Content="Membership Size:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="MembershipSizeLabel" Grid.Row="7" Grid.Column="1" Content="[Size]" Margin="0,5,0,5"/>
+
+                <Label Grid.Row="8" Grid.Column="0" Content="Election Participation:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="ElectionParticipationLabel" Grid.Row="8" Grid.Column="1" Content="[Participation Info]" Margin="0,5,0,5"/>
+
+                <Label Grid.Row="9" Grid.Column="0" Content="Funding Resource:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="FundingSourcesLabel" Grid.Row="9" Grid.Column="1" Content="[Funding Info]" Margin="0,5,0,5"/>
+
+                <Label Grid.Row="10" Grid.Column="0" Content="Legal Certification:" FontWeight="Bold" Margin="0,5,0,5"/>
+                <Label x:Name="CretificationLabel" Grid.Row="10" Grid.Column="1" Content="[Certification Info]" Margin="0,5,0,5"/>
 
             </Grid>
+
+            <StackPanel Name="EditPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Visibility="Collapsed">
+                <TextBox x:Name="PartyNameTextBox" Text="Enter Party Name" Margin="0,5,0,5"/>
+                <TextBox x:Name="PartyAcronymTextBox" Text="Enter Party Acronym" Margin="0,5,0,5"/>
+                <TextBox x:Name="FoundedTextBox" Text="Enter Party Acronym" Margin="0,5,0,5"/>
+                <TextBox x:Name="HeadquartersLocationTextBox" Text="Enter Headquarters Location" Margin="0,5,0,5"/>
+                <TextBox x:Name="PartyLeaderTextBox" Text="Enter Party Leader" Margin="0,5,0,5"/>
+                <TextBox x:Name="PartyInfoTextBox" Text="Enter Party Information" Margin="0,5,0,5"/>
+                <TextBox x:Name="MembershipSizeTextBox" Text="Enter Party Membership Size" Margin="0,5,0,5"/>
+                <TextBox x:Name="MembershipCriteriaTextBox" Text="Enter Membership Criteria" Margin="0,5,0,5"/>
+                <TextBox x:Name="ElectionParticipationTextBox" Text="Enter Election Participation" Margin="0,5,0,5"/>
+                <TextBox x:Name="FundingSourcesTextBox" Text="Enter Funding Sources" Margin="0,5,0,5"/>
+
+                <!-- Legal Certification File Picker -->
+                <Label Content="Legal Certification File:" FontWeight="Bold" Margin="0,5"/>
+                <Button x:Name="LegalCertificationButton" Content="Select Legal Certification File" Margin="0,5" Click="LegalCertificationButton_Click"/>
+                <TextBlock x:Name="CertificationFileText" Text="No file selected" Margin="0,5"/>
+            </StackPanel>
+
+            <Button x:Name="UpdateButton" Content="Update" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,10,10" Click="UpdateButton_Click"
+        Foreground="White" Background="DarkBlue"/>
+
         </Grid>
     </Grid>
 </Window>

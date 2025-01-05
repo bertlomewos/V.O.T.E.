@@ -22,7 +22,7 @@ namespace VOTE.Model
         public byte[] LegalCertification { get; set; }
 
         SendToDb sd = new SendToDb();
-        public Party(string email, string password, string role, string PartyName, string partyAcronym, DateTime? foundedDate,
+       public Party(string email, string password, string role, string PartyName, string partyAcronym, DateTime? foundedDate,
        string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize,
        string electionParticipation, string fundingSources, byte[] legalCertification)
        : base(email, password, role)
@@ -44,8 +44,9 @@ namespace VOTE.Model
         }
         public override void assign()
         {
-            sd.InsertINtoUsers(Email, Password, Role);
-            sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate?.ToString(), HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification);
+            int userId = sd.InsertINtoUsers(Email, Password, Role);
+            sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate?.ToString(), HeadquartersLocation, PartyLeader,
+                    MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification, userId);
         }
     }
 }

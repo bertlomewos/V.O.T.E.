@@ -48,6 +48,10 @@ namespace VOTE
 
                 legalCertificationData = File.ReadAllBytes(filePath); // Store file as byte array
             }
+            else
+            {
+                MessageBox.Show("No file selected.");
+            }
         }
 
         private void Next(object sender, RoutedEventArgs e)
@@ -70,11 +74,52 @@ namespace VOTE
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            DateTime foundedDate = FoundedDate.SelectedDate ?? DateTime.MinValue;
-            User user = new Party(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), PartyName.Text, PartyAcronym.Text, foundedDate, HeadquartersLocation.Text, PartyLeader.Text, MembershipCriteria.Text, PartyInfo.Text, int.Parse(MembershipSize.Text), ElectionParticipation.Text, FundingSources.Text, legalCertificationData);
+            if (string.IsNullOrWhiteSpace(Email.Text))
+            {
+                MessageBox.Show("Email is required.");
+                return;
+            }
 
-            user.assign();
+            if (string.IsNullOrWhiteSpace(PartyName.Text) || string.IsNullOrWhiteSpace(PartyAcronym.Text))
+            {
+                MessageBox.Show("Party Name and Acronym are required.");
+                return;
+            }
+
+            if (legalCertificationData == null)
+            {
+                MessageBox.Show("Please upload the legal certification file.");
+                return;
+            }
+
+            DateTime foundedDate = FoundedDate.SelectedDate ?? DateTime.MinValue;
+
+            if (!int.TryParse(MembershipSize.Text, out int membershipSize))
+            {
+                MessageBox.Show("Please enter a valid membership size.");
+                return;
+            }
+
+            Party party = new Party(
+                Email.Text,
+                Password.Password,
+                (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                PartyName.Text,
+                PartyAcronym.Text,
+                foundedDate,
+                HeadquartersLocation.Text,
+                PartyLeader.Text,
+                MembershipCriteria.Text,
+                PartyInfo.Text,
+                membershipSize,
+                ElectionParticipation.Text,
+                FundingSources.Text,
+                legalCertificationData
+            );
+
+            party.assign();
         }
+
 
 
     }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
 using VOTE.Model;
 
 
@@ -42,7 +43,10 @@ namespace VOTE.Model
 
         public void GetParties(string UID)
         {
-            string query = "SELECT PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification, UserID FROM parties WHERE UserID = @UserID";
+            string query = "SELECT PartyName, PartyAcronym, FoundedDate, " +
+                           "HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, " +
+                           "MembershipSize, ElectionParticipation, FundingSources, LegalCertification, " +
+                           "UserID FROM parties WHERE UserID = @UserID";
 
             using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
             {
@@ -51,10 +55,17 @@ namespace VOTE.Model
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
+                // Initialize partyList if not done yet
+                if (partyList == null)
+                    partyList = new List<string>();
+
                 while (reader.Read())
                 {
                     string partyName = reader["PartyName"].ToString();
                     string partyAcronym = reader["PartyAcronym"].ToString();
+                    DateTime? foundedDate = reader["FoundedDate"] == DBNull.Value
+                        ? (DateTime?)null
+                        : Convert.ToDateTime(reader["FoundedDate"]);
                     string headquartersLocation = reader["HeadquartersLocation"].ToString();
                     string partyLeader = reader["PartyLeader"].ToString();
                     string membershipCriteria = reader["MembershipCriteria"].ToString();
@@ -62,21 +73,38 @@ namespace VOTE.Model
                     int membershipSize = Convert.ToInt32(reader["MembershipSize"]);
                     string electionParticipation = reader["ElectionParticipation"].ToString();
                     string fundingSources = reader["FundingSources"].ToString();
+                    byte[] legalCertification = reader["LegalCertification"] as byte[];
 
+                    // Add the strings to partyList
                     partyList.AddRange(new List<string>
-                        {
-                            partyName,
-                            partyAcronym,
-                            headquartersLocation,
-                            partyLeader,
-                            membershipCriteria,
-                            partyInfo,
-                            electionParticipation,
-                            fundingSources
-                        });
+                    {
+                        partyName,
+                        partyAcronym,
+                        foundedDate.ToString(),
+                        headquartersLocation,
+                        partyLeader,
+                        membershipCriteria,
+                        partyInfo,
+                        electionParticipation,
+                        fundingSources,
+                        membershipSize.ToString() 
+                    });
+
+                    //if (legalCertification != null)
+                    //{
+                    //    // You could either save the file or handle it as required
+                    //    // For example, saving it to a file:
+                    //    string legalCertPath = @"";
+                    //    File.WriteAllBytes(legalCertPath, legalCertification);
+                    //}
+                    //else
+                    //{
+                    //    partyList.Add("No Legal Certification Available");
+                    //}
                 }
             }
         }
+
 
         public List<Party> PartiesContainer = new List<Party>();
 
@@ -88,7 +116,7 @@ namespace VOTE.Model
                 {
                     connection.Open();
 
-                    string query = "SELECT * FROM Parties";
+                    string query = "SELECT * FROM parties";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -104,9 +132,9 @@ namespace VOTE.Model
                                 : Convert.ToDateTime(reader["FoundedDate"]);
 
                                 var party = new Party(
-                                email: "example@example.com", 
-                                password: "password123",      
-                                role: "role",                 
+                                email: "", 
+                                password: "",      
+                                role: "",                 
                                 PartyName: reader["PartyName"].ToString(),
                                 partyAcronym: reader["PartyAcronym"].ToString(),
                                 foundedDate: foundedDate,
@@ -139,7 +167,7 @@ namespace VOTE.Model
                                     //LegalCertificationLabel = { Content = reader["LegalCertification"].ToString() }
 
                                 };
-                                //partyControl.Margin = new Thickness(10);
+                                partyControl.Margin = new Thickness(10);
 
                                 partiesContainer.Children.Add(partyControl);
                             }
