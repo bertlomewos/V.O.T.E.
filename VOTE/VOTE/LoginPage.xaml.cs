@@ -25,7 +25,14 @@ namespace VOTE
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             string UID = id.Text;
             string Pass = pass.Password;
@@ -63,5 +70,16 @@ namespace VOTE
             RegisterPage rp = new RegisterPage();
             rp.Show();
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
     }
 }
