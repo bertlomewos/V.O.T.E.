@@ -139,7 +139,7 @@ namespace VOTE.Model
                                     //LegalCertificationLabel = { Content = reader["LegalCertification"].ToString() }
 
                                 };
-                                partyControl.Margin = new Thickness(10);
+                                //partyControl.Margin = new Thickness(10);
 
                                 partiesContainer.Children.Add(partyControl);
                             }

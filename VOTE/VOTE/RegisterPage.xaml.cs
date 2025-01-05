@@ -64,13 +64,16 @@ namespace VOTE
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            User user = new Voter(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), NID.Text, fname.Text, lname.Text, loc.Text);
+            Voter user = new Voter(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), NID.Text, fname.Text, lname.Text, loc.Text);
+            user.assign();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             DateTime foundedDate = FoundedDate.SelectedDate ?? DateTime.MinValue;
             User user = new Party(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), PartyName.Text, PartyAcronym.Text, foundedDate, HeadquartersLocation.Text, PartyLeader.Text, MembershipCriteria.Text, PartyInfo.Text, int.Parse(MembershipSize.Text), ElectionParticipation.Text, FundingSources.Text, legalCertificationData);
+
+            user.assign();
         }
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace VOTE.Model
 {
@@ -39,13 +40,12 @@ namespace VOTE.Model
             this.LegalCertification = legalCertification;
 
 
-            //assignParty();
+          
         }
-
-        public void assignParty()
+        public override void assign()
         {
+            sd.InsertINtoUsers(Email, Password, Role);
             sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate?.ToString(), HeadquartersLocation, PartyLeader, MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification);
         }
-
     }
 }
