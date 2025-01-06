@@ -26,10 +26,11 @@ namespace VOTE
         public UserControl1()
         {
             InitializeComponent();
-            voteManage = new VoteManage(); 
-
+            voteManage = new VoteManage();         
+         
         }
         
+
         private void UpdateVoteCount()
         {
             int newVoteCount = voteManage.GetVoteCount(PartyID);

@@ -106,9 +106,8 @@ namespace VOTE.Model
         }
 
 
-        public List<Party> PartiesContainer = new List<Party>();
-
-        public void GetPartiesForMainPage(List<Party> parties, WrapPanel partiesContainer)
+        public List<Party> parties = new List<Party>();
+        public void GetPartiesForMainPage()
         {
             try
             {
@@ -122,8 +121,7 @@ namespace VOTE.Model
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            PartiesContainer.Clear();
-                            partiesContainer.Children.Clear();
+                            
 
                             while (reader.Read())
                             {
@@ -151,25 +149,7 @@ namespace VOTE.Model
 
                                 parties.Add(party); 
 
-                                // Create a UserControl1 instance and set its data
-                                var partyControl = new UserControl1
-                                {
-                                    PartyNameLabel = { Content = party.PartyName },
-                                    PartyAcronymLabel = { Content = party.PartyAcronym },
-                                    FoundedDateLabel = { Content = reader["FoundedDate"].ToString() },
-                                    HeadquartersLocationLabel = { Content = party.HeadquartersLocation },
-                                    PartyLeaderLabel = { Content = party.PartyLeader },
-                                    MembershipCriteriaLabel = { Content = party.MembershipCriteria },
-                                    PartyInfoLabel = { Text = party.PartyInfo },
-                                    MembershipSizeLabel = { Content = party.MembershipSize },
-                                    ElectionParticipationLabel = { Content = party.ElectionParticipation },
-                                    FundingSourcesLabel = { Content = party.FundingSources },
-                                    //LegalCertificationLabel = { Content = reader["LegalCertification"].ToString() }
-
-                                };
-                                partyControl.Margin = new Thickness(10);
-
-                                partiesContainer.Children.Add(partyControl);
+       
                             }
                         }
                     }

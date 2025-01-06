@@ -21,14 +21,47 @@ namespace VOTE
     /// </summary>
     public partial class MainPage : Window
     {
-        private List<Party> Parties = new List<Party>();
+        GetFromDb gb;
 
         public MainPage()
         {
             InitializeComponent();
 
             var getFromDb = new GetFromDb();
-            getFromDb.GetPartiesForMainPage(Parties, PartiesContainer);
+            gb = new GetFromDb();
+            gb.GetPartiesForMainPage();
+            AssigneUserControl();
+
+        }
+        private void AssigneUserControl()
+        {
+            List<Party> pL = gb.parties;
+            PartiesContainer.Children.Clear();
+            // Create a UserControl1 instance and set its data
+            foreach (Party p in pL)
+            {
+                var partyControl = new UserControl1
+                {
+
+                    PartyNameLabel = { Content = p.PartyName },
+                    PartyAcronymLabel = { Content = p.PartyAcronym },
+                    //FoundedDateLabel = { Content = reader["FoundedDate"].ToString() },
+                    HeadquartersLocationLabel = { Content = p.HeadquartersLocation },
+                    PartyLeaderLabel = { Content = p.PartyLeader },
+                    MembershipCriteriaLabel = { Content = p.MembershipCriteria },
+                    PartyInfoLabel = { Text = p.PartyInfo },
+                    MembershipSizeLabel = { Content = p.MembershipSize },
+                    ElectionParticipationLabel = { Content = p.ElectionParticipation },
+                    FundingSourcesLabel = { Content = p.FundingSources },
+                    //LegalCertificationLabel = { Content = reader["LegalCertification"].ToString() }
+
+                };
+                partyControl.Margin = new Thickness(10);
+                PartiesContainer.Children.Add(partyControl);
+            }
+
+
+
 
         }
 
