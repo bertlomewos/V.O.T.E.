@@ -52,7 +52,7 @@
                         <Image Source="/image_2024-12-21_21-27-57.png" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="100" Margin="0,0,10,0"/>
 
                         <!-- Info Panel on the Left Side -->
-                        <Grid Name="InfoPanel" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="292">
+                        <Grid Name="InfoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="292">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -108,7 +108,7 @@
 
                         </Grid>
 
-                        <StackPanel Name="EditPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Visibility="Visible" Height="auto" Width="220">
+                        <StackPanel Name="EditPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Visibility="Hidden" Height="auto" Width="220">
                             <TextBox x:Name="PartyNameTextBox" Text="Enter Party Name" Margin="0,5,0,5"/>
                             <TextBox x:Name="PartyAcronymTextBox" Text="Enter Party Acronym" Margin="0,15,0,5"/>
                             <TextBox x:Name="FoundedTextBox" Text="Enter Party Acronym" Margin="0,15,0,5"/>
