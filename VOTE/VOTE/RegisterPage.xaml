@@ -6,132 +6,405 @@
         xmlns:local="clr-namespace:VOTE"
         mc:Ignorable="d"
         Title="RegisterPage"
-        Width="700"
-        Height="400"
+        Width="800" Height="550"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
-        <Grid x:Name="UserPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <!-- Email input area -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="Email" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox x:Name="Email" Width="200" HorizontalAlignment="Center" Margin="5"/>
+    <Border CornerRadius="50">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/back1.jpg"/>
+        </Border.Background>
+
+        <Border CornerRadius="10"
+            BorderThickness="2"
+            Opacity="0.9">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0.7"/>
+                    <GradientStop Color="White" Offset="0.4"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1B1448" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Register"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Montserrat"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="btnClose_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <StackPanel Name="UserPanel" Width="400" Grid.Row="1" Orientation="Vertical" Margin="0,35,0,0" 
+                            Visibility="Visible">
+
+                    <TextBlock Text="REGISTER" Foreground="White" FontSize="25" FontWeight="Medium" FontFamily="Montserrat" HorizontalAlignment="Center"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Email" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <TextBox x:Name="Email" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Password" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <PasswordBox x:Name="Password" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Confirm Password" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <TextBox x:Name="ConfirmPassword" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Role" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <ComboBox x:Name="RoleComboBox" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0">
+                            <ComboBoxItem Content="Voter"/>
+                            <ComboBoxItem Content="Party"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,0" >
+                        <Button                   
+                            BorderThickness="0"
+                            Content="Next"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"                           
+                            Margin="0,50,0,0"
+                            Click="Button_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#462AD8"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#28AEED"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="150" Height="40"
+                    CornerRadius="20"
+                    Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
 
-                <!-- Password input area -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="Password" VerticalAlignment="Center" Margin="5"/>
-                    <PasswordBox x:Name="Password" Width="200" HorizontalAlignment="Center" Margin="5"/>
+                <StackPanel Name="VoterPanel" Width="400" Grid.Row="1" Orientation="Vertical" Margin="0,35,0,0" 
+                            Visibility="Hidden">
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="First Name" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <TextBox x:Name="fname" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Last Name" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <TextBox x:Name="lname" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Location" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <TextBox x:Name="loc" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="ID Number" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                        <TextBox x:Name="NID" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,0" >
+                        <Button x:Name="Submit"                   
+                        BorderThickness="0"
+                        Content="Submit"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"                           
+                        Margin="0,50,0,0"
+                        Click="Button_Click_2">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#462AD8"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#28AEED"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Name="PartyPanel" Width="400" Grid.Row="1" Orientation="Vertical" Margin="0,35,0,0" 
+                            Visibility="Hidden">
+
+                    <StackPanel Name="FirstPanel" Visibility="Visible">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Party Name" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="PartyName" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Party Acronym" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="PartyAcronym" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Founded Date:" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <DatePicker x:Name="FoundedDate" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Headquarters Location" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="HeadquartersLocation" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="PartyLeader" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="PartyLeader" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0" >
+                            <Button x:Name="Previous"                   
+                                BorderThickness="0"
+                                Content="Previous"
+                                Foreground="White"
+                                FontSize="12"
+                                FontFamily="Montserrat"
+                                Cursor="Hand"                           
+                                Margin="20,50,0,0"
+                                Click="previous">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#462AD8"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#28AEED"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="150" Height="40"
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Button x:Name="Next3"                   
+                                BorderThickness="0"
+                                Content="Next"
+                                Foreground="White"
+                                FontSize="12"
+                                FontFamily="Montserrat"
+                                Cursor="Hand"                           
+                                Margin="60,50,0,0"
+                                Click="Next">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#462AD8"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#28AEED"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="150" Height="40"
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Name="SecondPanel" Visibility="Collapsed">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Membership Criteria" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="MembershipCriteria" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Party Info" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="PartyInfo" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Membership Size" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="MembershipSize" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Election Participation" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="ElectionParticipation" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Funding Sources" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <TextBox x:Name="FundingSources" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Legal Certification" Foreground="DarkGray" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" VerticalAlignment="Center" Width="200" Margin="0,35,0,0"/>
+                            <Button Content="Upload" BorderThickness="0" FontSize="12" FontFamily="Montserrat" Cursor="Hand" Margin="0,50,0,0" Click="UploadButton_Click"/>
+                            <TextBox x:Name="FileNameTextBlock" Text="No file selected" Width="200" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="Black" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Padding="20,0,0,0" HorizontalAlignment="Center" Margin="0,35,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,0" >
+                            <Button Name="Submit2"                   
+                                    BorderThickness="0"
+                                    Content="Submit"
+                                    Foreground="White"
+                                    FontSize="12"
+                                    FontFamily="Montserrat"
+                                    Cursor="Hand"                           
+                                    Margin="20,50,0,0"
+                                    Click="Button_Click_3">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#462AD8"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#28AEED"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="150" Height="40"
+                                                CornerRadius="20"
+                                                Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                              HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+
+                    </StackPanel>
                 </StackPanel>
                 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="Confirm Password" VerticalAlignment="Center" Margin="5"/>
-                    <PasswordBox Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-
-                <!-- Role selection (ComboBox) -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="Role" VerticalAlignment="Center" Margin="5"/>
-                    <ComboBox x:Name="RoleComboBox" Width="200" HorizontalAlignment="Center" Margin="5">
-                        <ComboBoxItem Content="Voter"/>
-                        <ComboBoxItem Content="Party"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <Button Content="Next" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click"/>
-            </StackPanel>
-        </Grid>
-        <Grid x:Name="VoterPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="First Name" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox x:Name="fname" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="Last Name" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox x:Name="lname" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="Location" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox x:Name="loc" Width="201" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="ID Number" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox x:Name="NID" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-
-                <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click_2"/>
-            </StackPanel>
-        </Grid>
-        <Grid x:Name="PartyPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
-            
-            <Grid x:Name="FirstPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Party Name" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="PartyName" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Party Acronym" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="PartyAcronym" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Founded Date:" VerticalAlignment="Center" Margin="5" />
-                        <DatePicker x:Name="FoundedDate" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Headquarters Location" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="HeadquartersLocation" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="PartyLeader" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="PartyLeader" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="Previous" Width="100" HorizontalAlignment="Left" Margin="30" Click="previous"/>
-                        <Button Content="Next" Width="100" HorizontalAlignment="Right" Margin="30" Click="Next"/>
-                    </StackPanel>
-
-                </StackPanel>
+                
             </Grid>
-            <Grid x:Name="SecondPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Membership Criteria" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="MembershipCriteria" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="PartyInfo" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="PartyInfo" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Membership Size" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="MembershipSize" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Election Participation" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="ElectionParticipation" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Funding Sources" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="FundingSources" Width="200" HorizontalAlignment="Center" Margin="5"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="Legal Certification" VerticalAlignment="Center" Margin="5"/>
-                        <Button Content="Upload" Width="100" HorizontalAlignment="Center" Margin="5" Click="UploadButton_Click"/>
-                        <TextBlock x:Name="FileNameTextBlock" Text="No file selected" VerticalAlignment="Center" Margin="5"/>
-                    </StackPanel>
+        </Border>
 
+    </Border>
 
-                    <Button Content="Submit" Width="100" HorizontalAlignment="Center" Margin="5" Click="Button_Click_3"/>
-
-                </StackPanel>
-            </Grid>
-
-        </Grid>
-        
-
-    </Grid>
+    
 </Window>

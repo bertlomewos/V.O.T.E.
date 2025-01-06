@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using VOTE.Model;
 
 namespace VOTE
@@ -56,14 +57,14 @@ namespace VOTE
 
         private void Next(object sender, RoutedEventArgs e)
         {
-            FirstPanel.Visibility = Visibility.Hidden;
+            FirstPanel.Visibility = Visibility.Collapsed;
             SecondPanel.Visibility = Visibility.Visible;
 
         }
         private void previous(object sender, RoutedEventArgs e)
         {
             FirstPanel.Visibility = Visibility.Visible;
-            SecondPanel.Visibility = Visibility.Hidden;
+            SecondPanel.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -120,7 +121,28 @@ namespace VOTE
             party.assign();
         }
 
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
 
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
 
+        private void LoginPageBtn(object sender, MouseButtonEventArgs e)
+        {
+            LoginPage lp = new LoginPage();
+            lp.Show();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
