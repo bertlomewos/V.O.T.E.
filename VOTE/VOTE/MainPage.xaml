@@ -14,7 +14,6 @@
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="1" Content="Vote for your Party" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
 
         <!-- Menu on the left side -->
         <StackPanel Grid.Column="0" Background="Black" HorizontalAlignment="Left" Width="100">
