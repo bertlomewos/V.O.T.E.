@@ -6,57 +6,70 @@
         xmlns:local="clr-namespace:VOTE"
         mc:Ignorable="d"
         Title="MainPage" Height="1080" Width="1920"
-        WindowState="Maximized"
-        >
+        Background="Transparent"
+        WindowState="Maximized" >
 
-    <Border CornerRadius="50">
-        <Border.Background>
-            <ImageBrush ImageSource="/Images/back1.jpg"/>
-        </Border.Background>
+    <Grid>
+        <!-- Background -->
+        <Border Grid.RowSpan="2" CornerRadius="10">
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/back1.jpg" />
+            </Border.Background>
+        </Border>
 
+        <!-- Semi-transparent overlay -->
         <Border CornerRadius="10"
-            BorderThickness="2"
-            Opacity="0.9">
-
+                BorderThickness="2"
+                Opacity="0.9"
+                Grid.RowSpan="2">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#462AD8" Offset="0.7"/>
-                    <GradientStop Color="White" Offset="0.4"/>
+                    <GradientStop Color="#462AD8" Offset="0.7" />
+                    <GradientStop Color="White" Offset="0.4" />
                 </LinearGradientBrush>
             </Border.BorderBrush>
-
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#060531" Offset="0"/>
-                    <GradientStop Color="#1B1448" Offset="0.5"/>
+                    <GradientStop Color="#060531" Offset="0" />
+                    <GradientStop Color="#1B1448" Offset="0.5" />
                 </LinearGradientBrush>
             </Border.Background>
-
-            <Grid>
-                <!-- Define Grid with two columns -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <!-- Menu on the left side -->
-                <StackPanel Grid.Column="0" Background="White" Grid.ColumnSpan="2" Margin="0,0,1666,0">
-                    <Button Content="Party's" Foreground="White" FontWeight="Bold" FontSize="16" Margin="10,30,0,0" Background="#FF141549" BorderBrush="White" Height="50" Width="auto" Click="PartyButton_Click" />
-                    <!--<Button Content="Events" Foreground="Black" FontWeight="Bold" FontSize="16" Margin="10" Background="White" BorderBrush="Black" Width="auto" Click="EventButton_Click" />-->
-                </StackPanel>
-
-                <!-- Content area for parties -->
-                <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFB1B1B1" Margin="60,40,0,0" Name="PartiesScrollViewer" Visibility="Hidden">
-                    <WrapPanel Name="PartiesContainer" Orientation="Horizontal" HorizontalAlignment="Left" />
-                </ScrollViewer>
-
-                <!-- Content area for events -->
-                <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Margin="60,40,0,0" Name="EventsScrollViewer" Visibility="Collapsed">
-                    <WrapPanel Name="EventsContainer" Orientation="Vertical" HorizontalAlignment="Left" />
-                </ScrollViewer>
-
-            </Grid>
         </Border>
-    </Border>
+
+        <!-- Main Content Layout -->
+        <Grid>
+            <!-- Define Grid with two columns -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="229" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- StackPanel for Menu on the left -->
+            <StackPanel Grid.Column="0" Background="White" Width="140" Margin="0,10,50,10">
+                <Button Content="Party's" 
+                        Foreground="White" 
+                        FontWeight="Bold" 
+                        FontSize="16" 
+                        Margin="10,30,0,0" 
+                        Background="#FF141549" 
+                        BorderBrush="White" 
+                        Height="50" 
+                        Width="127"
+                        Click="PartyButton_Click" />
+                <!--<Button Content="Events" Foreground="Black" FontWeight="Bold" FontSize="16" Margin="10" Background="White" BorderBrush="Black" Width="auto" Click="EventButton_Click" />-->
+            </StackPanel>
+
+            <!-- Content area for parties -->
+            <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF141549" Margin="0,40,0,0" Name="PartiesScrollViewer" Visibility="Hidden">
+                <WrapPanel Name="PartiesContainer" Background="#FF141549" Orientation="Horizontal" HorizontalAlignment="Left" />
+            </ScrollViewer>
+
+            <!-- Content area for events -->
+            <!--<ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Margin="60,40,0,0" Name="EventsScrollViewer" Visibility="Collapsed">
+                <WrapPanel Name="EventsContainer" Orientation="Vertical" HorizontalAlignment="Left" />
+            </ScrollViewer>-->
+            
+        </Grid>
+    </Grid>
 
 </Window>

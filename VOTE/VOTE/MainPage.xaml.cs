@@ -68,20 +68,20 @@ namespace VOTE
         private void PartyButton_Click(object sender, RoutedEventArgs e)
         {
             PartiesScrollViewer.Visibility = Visibility.Collapsed;
-            EventsScrollViewer.Visibility = Visibility.Collapsed;
+            //EventsScrollViewer.Visibility = Visibility.Collapsed;
 
             PartiesScrollViewer.Visibility = Visibility.Visible;
 
         }
 
-        private void EventButton_Click(object sender, RoutedEventArgs e)
-        {
-            PartiesScrollViewer.Visibility = Visibility.Collapsed;
-            EventsScrollViewer.Visibility = Visibility.Collapsed;
+        //private void EventButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    PartiesScrollViewer.Visibility = Visibility.Collapsed;
+        //    EventsScrollViewer.Visibility = Visibility.Collapsed;
 
 
-            EventsScrollViewer.Visibility = Visibility.Visible;
+        //    EventsScrollViewer.Visibility = Visibility.Visible;
 
-        }
+       // }
     }
     }
