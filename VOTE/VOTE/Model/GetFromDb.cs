@@ -89,18 +89,6 @@ namespace VOTE.Model
                         fundingSources,
                         membershipSize.ToString() 
                     });
-
-                    //if (legalCertification != null)
-                    //{
-                    //    // You could either save the file or handle it as required
-                    //    // For example, saving it to a file:
-                    //    string legalCertPath = @"";
-                    //    File.WriteAllBytes(legalCertPath, legalCertification);
-                    //}
-                    //else
-                    //{
-                    //    partyList.Add("No Legal Certification Available");
-                    //}
                 }
             }
         }
@@ -145,11 +133,7 @@ namespace VOTE.Model
                                 fundingSources: reader["FundingSources"].ToString(),
                                 legalCertification: null // Replace with actual data if available
                             );
-
-
-                                parties.Add(party); 
-
-       
+                                parties.Add(party);
                             }
                         }
                     }

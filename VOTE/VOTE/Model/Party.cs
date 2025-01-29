@@ -9,6 +9,7 @@ namespace VOTE.Model
 {
     internal class Party : User
     {
+        public static int ID { get; set; }
         public string PartyName { get; set; }
         public string PartyAcronym { get; set; }
         public DateTime? FoundedDate { get; set; }
@@ -38,10 +39,10 @@ namespace VOTE.Model
             this.ElectionParticipation = electionParticipation;
             this.FundingSources = fundingSources;
             this.LegalCertification = legalCertification;
-
-
-          
         }
+
+        
+        
         public override void assign()
         {
             int userId = sd.InsertINtoUsers(Email, Password, Role);

@@ -81,5 +81,8 @@ namespace VOTE
             WindowState = WindowState.Minimized;
         }
 
+        private void id_TextChanged(object sender, TextChangedEventArgs e)
+        {
+                    }
     }
 }

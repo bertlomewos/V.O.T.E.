@@ -21,24 +21,22 @@ namespace VOTE
     /// </summary>
     public partial class MainPage : Window
     {
-        GetFromDb gb;
+        GetFromDb getFromDb;
 
         public MainPage()
         {
             InitializeComponent();
 
-            var getFromDb = new GetFromDb();
-            gb = new GetFromDb();
-            gb.GetPartiesForMainPage();
+            getFromDb = new GetFromDb();
+            getFromDb.GetPartiesForMainPage();
             AssigneUserControl();
 
         }
         private void AssigneUserControl()
         {
-            List<Party> pL = gb.parties;
             PartiesContainer.Children.Clear();
             // Create a UserControl1 instance and set its data
-            foreach (Party p in pL)
+            foreach (Party p in getFromDb.parties)
             {
                 var partyControl = new UserControl1
                 {
