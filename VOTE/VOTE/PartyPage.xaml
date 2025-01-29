@@ -41,7 +41,6 @@
                     <!-- Menu Bar -->
                     <Menu VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2">
                         <MenuItem Header="DashBoard" Height="25"/>
-                        <MenuItem Header="Events" Height="25" Click="MenuItem_Click_2"/>
                         <MenuItem Header="LogOut" Height="25" Click="MenuItem_Click"/>
                     </Menu>
 
