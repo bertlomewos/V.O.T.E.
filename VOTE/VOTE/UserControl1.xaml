@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="VOTE.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VOTE"
+             mc:Ignorable="d" 
+             Height="Auto" Width="300" d:DesignHeight="610.478">
+    <Grid Margin="0,0,0,10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="LightBlue" Grid.Row="0">
+            <Image Name="PartyImage" Height="120" VerticalAlignment="Top" />
+        </StackPanel>
+
+        <!--<StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+            <Label Content="Vote Count: " FontWeight="Bold" Width="120"/>
+            <Label Name="VoteCountLabel"/>
+        </StackPanel>-->
+
+        <StackPanel Background="#FF141549" VerticalAlignment="Top" Margin="10,10,10,0" Grid.Row="1">
+            <StackPanel Orientation="Horizontal"  Margin="0,5,0,5">
+                <Label Content="Party Name: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="PartyNameLabel" Foreground="white"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Party Acronym: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="PartyAcronymLabel" Foreground="white"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Founded Date: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="FoundedDateLabel" Foreground="white"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="2">
+            <Label Content="More..." Foreground="white" Width="100" Height="30" Margin="5,0,0,0" MouseDoubleClick="MoreButton_Click"/>
+            <Button Content="Vote" Width="100" Height="30" Click="Button_Click"/>
+            <Label Name="VoteCountLabel" Foreground="white" Margin="30,0,0,0" Width="60" Height="30"/>
+        </StackPanel>
+
+        <StackPanel Background="#FF141549" Name="AdditionalInfoPanel" VerticalAlignment="Top" Visibility="Collapsed" Margin="10,15,10,0" Grid.Row="3" Height="Auto">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Headquarters Location: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="HeadquartersLocationLabel" Foreground="white"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Party Leader: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="PartyLeaderLabel" Foreground="white"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Membership Criteria: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="MembershipCriteriaLabel" Foreground="white"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Party Info: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <TextBlock Name="PartyInfoLabel" Foreground="white" TextWrapping="Wrap" Width="172" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Membership Size: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="MembershipSizeLabel"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Election Participation: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="ElectionParticipationLabel" Foreground="white"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Funding Sources: " Foreground="white" FontWeight="Bold" Width="120"/>
+                <Label Name="FundingSourcesLabel" Foreground="white"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Label Content="Legal Certification: " Foreground="white" FontWeight="Bold" Width="276" Height="103"/>
+                <Image Name="LegalCertificationImage" Height="100" Stretch="Uniform" Margin="0,5,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        </Grid>
+</UserControl>

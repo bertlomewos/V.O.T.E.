@@ -25,7 +25,14 @@ namespace VOTE
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             string UID = id.Text;
             string Pass = pass.Password;
@@ -52,6 +59,10 @@ namespace VOTE
                     this.Close();
                 }
             }
+            else
+            {
+                MessageBox.Show("Invalid user ID or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void RegisterPageBtn(object sender, MouseButtonEventArgs e)
@@ -59,5 +70,19 @@ namespace VOTE
             RegisterPage rp = new RegisterPage();
             rp.Show();
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void id_TextChanged(object sender, TextChangedEventArgs e)
+        {
+                    }
     }
 }

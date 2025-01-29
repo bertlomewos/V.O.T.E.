@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using VOTE.Model;
 
+
 namespace VOTE
 {
     /// <summary>
@@ -20,12 +21,57 @@ namespace VOTE
     /// </summary>
     public partial class MainPage : Window
     {
+        GetFromDb getFromDb;
+
         public MainPage()
         {
             InitializeComponent();
-            GetFromDb getFromDb = new GetFromDb();
+
+            getFromDb = new GetFromDb();
             getFromDb.GetPartiesForMainPage();
-            PartyDataGrid.ItemsSource = getFromDb.partyListForMainPage;
+            AssigneUserControl();
+
         }
+        private void AssigneUserControl()
+        {
+            PartiesContainer.Children.Clear();
+            // Create a UserControl1 instance and set its data
+            foreach (Party p in getFromDb.parties)
+            {
+                var partyControl = new UserControl1
+                {
+                    PID = p.ID,
+                    PartyNameLabel = { Content = p.PartyName },
+                    PartyAcronymLabel = { Content = p.PartyAcronym },
+                    //FoundedDateLabel = { Content = reader["FoundedDate"].ToString() },
+                    HeadquartersLocationLabel = { Content = p.HeadquartersLocation },
+                    PartyLeaderLabel = { Content = p.PartyLeader },
+                    MembershipCriteriaLabel = { Content = p.MembershipCriteria },
+                    PartyInfoLabel = { Text = p.PartyInfo },
+                    MembershipSizeLabel = { Content = p.MembershipSize },
+                    ElectionParticipationLabel = { Content = p.ElectionParticipation },
+                    FundingSourcesLabel = { Content = p.FundingSources },
+                    //LegalCertificationLabel = { Content = reader["LegalCertification"].ToString() }
+
+                };
+                partyControl.Margin = new Thickness(10);
+                PartiesContainer.Children.Add(partyControl);
+            }
+
+
+
+
+        }
+
+        private void PartyButton_Click(object sender, RoutedEventArgs e)
+        {
+            PartiesScrollViewer.Visibility = Visibility.Collapsed;
+            //EventsScrollViewer.Visibility = Visibility.Collapsed;
+
+            PartiesScrollViewer.Visibility = Visibility.Visible;
+
+        }
+
+  
     }
-}
+    }

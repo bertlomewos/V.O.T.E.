@@ -6,135 +6,70 @@
         xmlns:local="clr-namespace:VOTE"
         mc:Ignorable="d"
         Title="MainPage" Height="1080" Width="1920"
-        WindowState="Maximized"
-        >
-    <Grid Background="#FFB1B1B1">
-        <!-- Define Grid with two columns --><!--
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            --><!-- Menu Column --><!--
-            <ColumnDefinition Width="*" />
-            --><!-- Content Column --><!--
-        </Grid.ColumnDefinitions>
+        Background="Transparent"
+        WindowState="Maximized" >
 
-        --><!-- Menu on the left side --><!--
-        <StackPanel Grid.Column="0" Background="Black" VerticalAlignment="Stretch">
-            <Button Content="Party's" Foreground="Black" FontWeight="Bold" FontSize="16" Margin="10" Background="white" BorderBrush="white" Width="78" />
-            <Button Content="Events" Foreground="Black" FontWeight="Bold" FontSize="16" Margin="10" Background="white" BorderBrush="Black" />
-        </StackPanel>
+    <Grid>
+        <!-- Background -->
+        <Border Grid.RowSpan="2" CornerRadius="10">
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/back1.jpg" />
+            </Border.Background>
+        </Border>
 
-        --><!-- Content area --><!--
-        <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Grid.ColumnSpan="2" Margin="60,24,0,0">
-            <Grid Name="DisplayPanel" Margin="10,10,0,0" Width="300" Height="340">
-                --><!-- Image at the top half, smaller size --><!--
-                <Image Name="PartyImage" VerticalAlignment="Top" Height="120" Margin="-13,10,33,0" />
+        <!-- Semi-transparent overlay -->
+        <Border CornerRadius="10"
+                BorderThickness="2"
+                Opacity="0.9"
+                Grid.RowSpan="2">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0.7" />
+                    <GradientStop Color="White" Offset="0.4" />
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0" />
+                    <GradientStop Color="#1B1448" Offset="0.5" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
 
-                --><!-- Labels with corresponding values --><!--
-                <StackPanel VerticalAlignment="Top" Margin="10,130,10,10">
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Name: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyNameLabel" Content="Sample Party" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Acronym: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyAcronymLabel" Content="SP" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Info: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyInfoLabel" Content="Some description of the party." VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    --><!-- "More..." label --><!--
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="More..." FontWeight="Bold" Foreground="Blue" VerticalAlignment="Center" Cursor="Hand"/>
-                    </StackPanel>
-
-                    --><!-- Vote Button --><!--
-                    <Button Name="VoteButton" Content="Vote" Width="100" Height="30" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                </StackPanel>
-            </Grid>
-        </Grid>
-        <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Margin="460,24,0,0">
-            <Grid Name="DisplayPanel1" Margin="10,10,0,0" Width="300" Height="340">
-                --><!-- Image at the top half, smaller size --><!--
-                <Image Name="PartyImage1" VerticalAlignment="Top" Height="120" Margin="10,10,10,0" />
-
-                --><!-- Labels with corresponding values --><!--
-                <StackPanel VerticalAlignment="Top" Margin="10,130,10,10">
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Name: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyNameLabel1" Content="Sample Party" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Acronym: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyAcronymLabel1" Content="SP" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Info: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyInfoLabel1" Content="Some description of the party." VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    --><!-- "More..." label --><!--
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="More..." FontWeight="Bold" Foreground="Blue" VerticalAlignment="Center" Cursor="Hand"/>
-                    </StackPanel>
-
-                    --><!-- Vote Button --><!--
-                    <Button Name="VoteButton1" Content="Vote" Width="100" Height="30" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                </StackPanel>
-            </Grid>
-        </Grid>
-        <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Margin="860,24,0,0">
-            <Grid Name="DisplayPanel2" Margin="10,10,0,0" Width="300" Height="340">
-                --><!-- Image at the top half, smaller size --><!--
-                <Image Name="PartyImage2" VerticalAlignment="Top" Height="120" Margin="10,10,10,0" />
-
-                --><!-- Labels with corresponding values --><!--
-                <StackPanel VerticalAlignment="Top" Margin="10,130,10,10">
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Name: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyNameLabel2" Content="Sample Party" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Acronym: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyAcronymLabel2" Content="SP" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="Party Info: " FontWeight="Bold" Width="100" VerticalAlignment="Center"/>
-                        <Label Name="PartyInfoLabel2" Content="Some description of the party." VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    --><!-- "More..." label --><!--
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Label Content="More..." FontWeight="Bold" Foreground="Blue" VerticalAlignment="Center" Cursor="Hand"/>
-                    </StackPanel>
-
-                    --><!-- Vote Button --><!--
-                    <Button Name="VoteButton2" Content="Vote" Width="100" Height="30" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                </StackPanel>
-            </Grid>
-        </Grid>-->
+        <!-- Main Content Layout -->
         <Grid>
-            <DataGrid x:Name="PartyDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Party Name" Binding="{Binding PartyName}" />
-                    <DataGridTextColumn Header="Acronym" Binding="{Binding PartyAcronym}" />
-                    <DataGridTextColumn Header="Headquarters" Binding="{Binding HeadquartersLocation}" />
-                    <DataGridTextColumn Header="Leader" Binding="{Binding PartyLeader}" />
-                    <DataGridTextColumn Header="Criteria" Binding="{Binding MembershipCriteria}" />
-                    <DataGridTextColumn Header="Info" Binding="{Binding PartyInfo}" />
-                    <DataGridTextColumn Header="Membership Size" Binding="{Binding MembershipSize}" />
-                    <DataGridTextColumn Header="Election Participation" Binding="{Binding ElectionParticipation}" />
-                    <DataGridTextColumn Header="Funding Sources" Binding="{Binding FundingSources}" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+            <!-- Define Grid with two columns -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="229" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
+            <!-- StackPanel for Menu on the left -->
+            <StackPanel Grid.Column="0" Background="White" Width="140" Margin="0,10,50,10">
+                <Button Content="Party's" 
+                        Foreground="White" 
+                        FontWeight="Bold" 
+                        FontSize="16" 
+                        Margin="10,30,0,0" 
+                        Background="#FF141549" 
+                        BorderBrush="White" 
+                        Height="50" 
+                        Width="127"
+                        Click="PartyButton_Click" />
+                <!--<Button Content="Events" Foreground="Black" FontWeight="Bold" FontSize="16" Margin="10" Background="White" BorderBrush="Black" Width="auto" Click="EventButton_Click" />-->
+            </StackPanel>
+
+            <!-- Content area for parties -->
+            <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF141549" Margin="0,40,0,0" Name="PartiesScrollViewer" Visibility="Hidden">
+                <WrapPanel Name="PartiesContainer" Background="#FF141549" Orientation="Horizontal" HorizontalAlignment="Left" />
+            </ScrollViewer>
+
+            <!-- Content area for events -->
+            <!--<ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Margin="60,40,0,0" Name="EventsScrollViewer" Visibility="Collapsed">
+                <WrapPanel Name="EventsContainer" Orientation="Vertical" HorizontalAlignment="Left" />
+            </ScrollViewer>-->
+            
+        </Grid>
     </Grid>
+
 </Window>

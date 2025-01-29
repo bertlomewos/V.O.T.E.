@@ -9,7 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\back1.jpg" />
+    <None Remove="logo5.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\back1.jpg" />
+    <Resource Include="logo5.png" />
   </ItemGroup>
 
 </Project>

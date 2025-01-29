@@ -21,13 +21,12 @@ namespace VOTE.Model
             FName = fName;
             LName = lName;
             Location = location;
-            assignVoter();
         }
 
-        public void assignVoter()
+        public void assign()
         {
+            sd.InsertINtoUsers(Email, Password, Role);
             sd.InsertINtoVoters(FName, LName, Location, ID);
-            MessageBox.Show("Voter Registered Successfully");
         }
     }
 }

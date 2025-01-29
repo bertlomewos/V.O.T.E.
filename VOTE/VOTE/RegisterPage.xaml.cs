@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using VOTE.Model;
 
 namespace VOTE
@@ -48,28 +49,100 @@ namespace VOTE
 
                 legalCertificationData = File.ReadAllBytes(filePath); // Store file as byte array
             }
+            else
+            {
+                MessageBox.Show("No file selected.");
+            }
         }
 
         private void Next(object sender, RoutedEventArgs e)
         {
-            FirstPanel.Visibility = Visibility.Hidden;
+            FirstPanel.Visibility = Visibility.Collapsed;
             SecondPanel.Visibility = Visibility.Visible;
 
+        }
+        private void previous(object sender, RoutedEventArgs e)
+        {
+            FirstPanel.Visibility = Visibility.Visible;
+            SecondPanel.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            User user = new Voter(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), NID.Text, fname.Text, lname.Text, loc.Text);
+            Voter user = new Voter(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), NID.Text, fname.Text, lname.Text, loc.Text);
+            user.assign();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            User user = new Party(Email.Text, Password.Password, (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(), PartyName.Text, PartyAcronym.Text, FoundedDate.Text, HeadquartersLocation.Text, PartyLeader.Text, MembershipCriteria.Text, PartyInfo.Text, int.Parse(MembershipSize.Text), ElectionParticipation.Text, FundingSources.Text, legalCertificationData);
+            if (string.IsNullOrWhiteSpace(Email.Text))
+            {
+                MessageBox.Show("Email is required.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(PartyName.Text) || string.IsNullOrWhiteSpace(PartyAcronym.Text))
+            {
+                MessageBox.Show("Party Name and Acronym are required.");
+                return;
+            }
+
+            if (legalCertificationData == null)
+            {
+                MessageBox.Show("Please upload the legal certification file.");
+                return;
+            }
+
+            DateTime foundedDate = FoundedDate.SelectedDate ?? DateTime.MinValue;
+
+            if (!int.TryParse(MembershipSize.Text, out int membershipSize))
+            {
+                MessageBox.Show("Please enter a valid membership size.");
+                return;
+            }
+
+            Party party = new Party(
+                Email.Text,
+                Password.Password,
+                (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                PartyName.Text,
+                PartyAcronym.Text,
+                foundedDate,
+                HeadquartersLocation.Text,
+                PartyLeader.Text,
+                MembershipCriteria.Text,
+                PartyInfo.Text,
+                membershipSize,
+                ElectionParticipation.Text,
+                FundingSources.Text,
+                legalCertificationData
+            );
+
+            party.assign();
         }
 
-        private void previous(object sender, RoutedEventArgs e)
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
 
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void LoginPageBtn(object sender, MouseButtonEventArgs e)
+        {
+            LoginPage lp = new LoginPage();
+            lp.Show();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
