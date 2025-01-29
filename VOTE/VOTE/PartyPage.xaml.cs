@@ -103,6 +103,7 @@ namespace VOTE
                 PartyAcronymLabel.Content = PartyAcronymTextBox.Text;
                 HeadquartersLocationLabel.Content = HeadquartersLocationTextBox.Text;
                 PartyLeaderLabel.Content = PartyLeaderTextBox.Text;
+                FoundLabel.Content = FoundedTextBox.Text;
                 MembershipCriteriaLabel.Content = MembershipCriteriaTextBox.Text;
                 PartyInfoLabel.Content = PartyInfoTextBox.Text;
                 MembershipSizeLabel.Content = MembershipSizeTextBox.Text;
@@ -135,28 +136,31 @@ namespace VOTE
 
         private void SavePartyData()
         {
-            SendToDb sd = new SendToDb();
+            GetFromDb sd = new GetFromDb();
 
             if (int.TryParse(MembershipSizeTextBox.Text, out int membershipSize))
             {
-                int userId = sd.InsertINtoUsers(UID, "", "parties");
+                DateTime? foundedDate = null;
 
-                // Check if the party exists by checking the PartyId or PartyName
-                int partyId = CheckPartyByName(PartyNameTextBox.Text);
-
-                if (partyId > 0) // Party exists, update it
+                if (DateTime.TryParse(FoundedTextBox.Text, out DateTime parsedDate))
                 {
-                    sd.UpdateParty(partyId, PartyNameTextBox.Text, PartyAcronymTextBox.Text, FoundedTextBox.Text,
-                                   HeadquartersLocationTextBox.Text, PartyLeaderTextBox.Text, PartyInfoTextBox.Text,
-                                   MembershipCriteriaTextBox.Text, membershipSize, ElectionParticipationTextBox.Text,
-                                   FundingSourcesTextBox.Text, legalCertificationByteArray, userId);
+                    foundedDate = parsedDate;
+                    sd.UpdateParty(PartyNameTextBox.Text, PartyAcronymTextBox.Text, foundedDate,
+                        HeadquartersLocationTextBox.Text, PartyLeaderTextBox.Text, PartyInfoTextBox.Text,
+                        MembershipCriteriaTextBox.Text, membershipSize, ElectionParticipationTextBox.Text,
+                        FundingSourcesTextBox.Text, legalCertificationByteArray);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid date format");
+                }
+
+
+
+     
 
                     MessageBox.Show("Party details updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else 
-                {
-                    
-                }
+              
             }
             else
             {

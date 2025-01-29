@@ -74,7 +74,7 @@ namespace VOTE.Model
                 throw;
             }
         }
-        public void InsertIntoParty(string partyName, string partyAcronym, string foundedDate,
+        public void InsertIntoParty(string partyName, string partyAcronym, DateTime? foundedDate,
             string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo,
             int membershipSize, string electionParticipation, string fundingSources, byte[] legalCertification, int userId)
         {
@@ -90,7 +90,7 @@ namespace VOTE.Model
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@PartyName", partyName);
                     command.Parameters.AddWithValue("@PartyAcronym", partyAcronym);
-                    command.Parameters.AddWithValue("@FoundedDate", foundedDate);
+                    command.Parameters.AddWithValue("@FoundedDate",foundedDate.HasValue ? foundedDate.Value : (object)DBNull.Value);
                     command.Parameters.AddWithValue("@HeadquartersLocation", headquartersLocation);
                     command.Parameters.AddWithValue("@PartyLeader", partyLeader);
                     command.Parameters.AddWithValue("@MembershipCriteria", membershipCriteria);
@@ -110,63 +110,7 @@ namespace VOTE.Model
                 throw;
             }
         }
-        public void UpdateParty(int partyId, string partyName, string partyAcronym, string foundedDate,
-                string headquartersLocation, string partyLeader, string partyInfo,
-                string membershipCriteria, int membershipSize, string electionParticipation,
-                string fundingSources, byte[] legalCertification, int userId)
-        {
-            string query = @"UPDATE parties 
-                     SET PartyName = @partyName, PartyAcronym = @partyAcronym, FoundedDate = @foundedDate, 
-                         HeadquartersLocation = @headquartersLocation, PartyLeader = @partyLeader, 
-                         PartyInfo = @partyInfo, MembershipCriteria = @membershipCriteria, 
-                         MembershipSize = @membershipSize, ElectionParticipation = @electionParticipation, 
-                         FundingSources = @fundingSources, LegalCertification = @legalCertification, 
-                         UserId = @userId 
-                     WHERE PartyId = @partyId";
-
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
-                {
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        // Add parameters
-                        command.Parameters.AddWithValue("@partyId", partyId);
-                        command.Parameters.AddWithValue("@partyName", partyName);
-                        command.Parameters.AddWithValue("@partyAcronym", partyAcronym);
-                        command.Parameters.AddWithValue("@foundedDate", foundedDate);
-                        command.Parameters.AddWithValue("@headquartersLocation", headquartersLocation);
-                        command.Parameters.AddWithValue("@partyLeader", partyLeader);
-                        command.Parameters.AddWithValue("@partyInfo", partyInfo);
-                        command.Parameters.AddWithValue("@membershipCriteria", membershipCriteria);
-                        command.Parameters.AddWithValue("@membershipSize", membershipSize);
-                        command.Parameters.AddWithValue("@electionParticipation", electionParticipation);
-                        command.Parameters.AddWithValue("@fundingSources", fundingSources);
-                        command.Parameters.AddWithValue("@legalCertification", legalCertification ?? (object)DBNull.Value);
-
-                        // Open connection
-                        connection.Open();
-
-                        // Execute the query
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            Console.WriteLine("Party record updated successfully.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("No rows were updated. Check PartyId and query conditions.");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error updating party: " + ex.Message);
-                throw;
-            }
-        }
+     
 
 
     }

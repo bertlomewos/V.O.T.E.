@@ -14,6 +14,7 @@ namespace VOTE.Model
 {
     class GetFromDb
     {
+       public static int theuserId;
         public (bool exists, string role) GetfromUsers(string userID, string password)
         {
             string query = "SELECT Password, Role FROM users WHERE UserID = @UserID";
@@ -32,6 +33,7 @@ namespace VOTE.Model
 
                     if (password == storedPassword && role != null)
                     {
+                        theuserId = int.Parse(userID);
                         return (true, role);
                     }
                 }
@@ -146,5 +148,64 @@ namespace VOTE.Model
             }
         }
 
+        public void UpdateParty(string partyName, string partyAcronym, DateTime? foundedDate,
+             string headquartersLocation, string partyLeader, string partyInfo,
+             string membershipCriteria, int membershipSize, string electionParticipation,
+             string fundingSources, byte[] legalCertification)
+        {
+
+         
+            string query = @"UPDATE parties 
+                     SET PartyName = @partyName, PartyAcronym = @partyAcronym, FoundedDate = @foundedDate, 
+                         HeadquartersLocation = @headquartersLocation, PartyLeader = @partyLeader, 
+                         PartyInfo = @partyInfo, MembershipCriteria = @membershipCriteria, 
+                         MembershipSize = @membershipSize, ElectionParticipation = @electionParticipation, 
+                         FundingSources = @fundingSources, LegalCertification = @legalCertification, 
+                         UserId = @userId 
+                     WHERE UserID = @UserID";
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Dbconn.connectionString))
+                {
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        // Add parameters
+                        command.Parameters.AddWithValue("@UserID", theuserId);
+                        command.Parameters.AddWithValue("@partyName", partyName);
+                        command.Parameters.AddWithValue("@partyAcronym", partyAcronym);
+                        command.Parameters.AddWithValue("@foundedDate", foundedDate.HasValue ? foundedDate.Value : (object)DBNull.Value);
+                        command.Parameters.AddWithValue("@headquartersLocation", headquartersLocation);
+                        command.Parameters.AddWithValue("@partyLeader", partyLeader);
+                        command.Parameters.AddWithValue("@partyInfo", partyInfo);
+                        command.Parameters.AddWithValue("@membershipCriteria", membershipCriteria);
+                        command.Parameters.AddWithValue("@membershipSize", membershipSize);
+                        command.Parameters.AddWithValue("@electionParticipation", electionParticipation);
+                        command.Parameters.AddWithValue("@fundingSources", fundingSources);
+                        command.Parameters.AddWithValue("@legalCertification", legalCertification ?? (object)DBNull.Value);
+
+                        // Open connection
+                        connection.Open();
+
+                        // Execute the query
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Party record updated successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No rows were updated. Check PartyId and query conditions.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error updating party: " + ex.Message);
+                throw;
+            }
+        }
     }
 }

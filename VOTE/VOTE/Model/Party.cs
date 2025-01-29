@@ -63,7 +63,7 @@ string electionParticipation, string fundingSources, byte[] legalCertification)
         public override void assign()
         {
             int userId = sd.InsertINtoUsers(Email, Password, Role);
-            sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate?.ToString(), HeadquartersLocation, PartyLeader,
+            sd.InsertIntoParty(PartyName, PartyAcronym, FoundedDate, HeadquartersLocation, PartyLeader,
                     MembershipCriteria, PartyInfo, MembershipSize, ElectionParticipation, FundingSources, LegalCertification, userId);
         }
     }
