@@ -9,7 +9,7 @@ namespace VOTE.Model
 {
     internal class Party : User
     {
-        public static int ID { get; set; }
+        public int ID { get; set; }
         public string PartyName { get; set; }
         public string PartyAcronym { get; set; }
         public DateTime? FoundedDate { get; set; }
@@ -40,9 +40,26 @@ namespace VOTE.Model
             this.FundingSources = fundingSources;
             this.LegalCertification = legalCertification;
         }
+        public Party(int id,string email, string password, string role, string PartyName, string partyAcronym, DateTime? foundedDate,
+string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize,
+string electionParticipation, string fundingSources, byte[] legalCertification)
+: base(email, password, role)
+        {
+            this.ID = id;
+            this.PartyName = PartyName;
+            this.PartyAcronym = partyAcronym;
+            this.FoundedDate = foundedDate;
+            this.HeadquartersLocation = headquartersLocation;
+            this.PartyLeader = partyLeader;
+            this.MembershipCriteria = membershipCriteria;
+            this.PartyInfo = partyInfo;
+            this.MembershipSize = membershipSize;
+            this.ElectionParticipation = electionParticipation;
+            this.FundingSources = fundingSources;
+            this.LegalCertification = legalCertification;
+        }
 
-        
-        
+
         public override void assign()
         {
             int userId = sd.InsertINtoUsers(Email, Password, Role);

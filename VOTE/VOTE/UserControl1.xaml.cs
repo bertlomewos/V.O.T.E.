@@ -22,7 +22,7 @@ namespace VOTE
     public partial class UserControl1 : UserControl
     {
         private VoteManage voteManage;
-        public static int PID;
+        public int PID;
         public UserControl1()
         {
             InitializeComponent();
@@ -36,14 +36,6 @@ namespace VOTE
             int newVoteCount = voteManage.GetVoteCount(PID);
             VoteCountLabel.Content = newVoteCount.ToString();
         }
- /*       public void InitializeControl(int partyID, string partyName)
-        {
-            PartyID = partyID;
-            PartyNameLabel.Content = partyName;
-
-            // Fetch the initial vote count
-            UpdateVoteCount();
-        }*/
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
             if (AdditionalInfoPanel.Visibility == Visibility.Collapsed)
@@ -60,7 +52,6 @@ namespace VOTE
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //  Console.WriteLine("Button clicked!");
             var getFromDb = new GetFromDb();
             getFromDb.GetPartiesForMainPage();
             voteManage.IncrementVoteCount(PID);

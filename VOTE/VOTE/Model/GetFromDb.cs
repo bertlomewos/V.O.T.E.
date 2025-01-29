@@ -120,7 +120,8 @@ namespace VOTE.Model
                                 var party = new Party(
                                 email: "", 
                                 password: "",      
-                                role: "",                 
+                                role: "", 
+                                id: int.Parse(reader["PartyID"].ToString()),
                                 PartyName: reader["PartyName"].ToString(),
                                 partyAcronym: reader["PartyAcronym"].ToString(),
                                 foundedDate: foundedDate,

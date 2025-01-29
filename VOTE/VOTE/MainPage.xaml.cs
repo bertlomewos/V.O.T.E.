@@ -40,7 +40,7 @@ namespace VOTE
             {
                 var partyControl = new UserControl1
                 {
-
+                    PID = p.ID,
                     PartyNameLabel = { Content = p.PartyName },
                     PartyAcronymLabel = { Content = p.PartyAcronym },
                     //FoundedDateLabel = { Content = reader["FoundedDate"].ToString() },
@@ -72,14 +72,6 @@ namespace VOTE
 
         }
 
-        //private void EventButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    PartiesScrollViewer.Visibility = Visibility.Collapsed;
-        //    EventsScrollViewer.Visibility = Visibility.Collapsed;
-
-
-        //    EventsScrollViewer.Visibility = Visibility.Visible;
-
-       // }
+  
     }
     }

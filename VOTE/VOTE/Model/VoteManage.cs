@@ -17,14 +17,15 @@ namespace VOTE.Model
                 using (MySqlConnection conn = new MySqlConnection(Dbconn.connectionString))
                 {
                     conn.Open();
-                    string query = "UPDATE parties SET CountVote = CountVote + 1 WHERE partyID = @PartyID";
+                    string query = "UPDATE parties SET CountVote = CountVote + 1 WHERE PartyID = @PartyID";
 
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
                         command.Parameters.AddWithValue("@PartyID", partyID);
                         command.ExecuteNonQuery();
-                    }
+                    } 
                 }
+                
             } 
             catch (Exception ex)
             {
@@ -41,12 +42,17 @@ namespace VOTE.Model
             using (MySqlConnection conn = new MySqlConnection(Dbconn.connectionString))
             {
                 conn.Open();
-                string query = "SELECT CountVote FROM parties WHERE partyID = @PartyID";
+                string query = "SELECT CountVote FROM parties WHERE PartyID = @PartyID";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@PartyID", partyID);
-                    voteCount = Convert.ToInt32(command.ExecuteScalar());
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        voteCount = int.Parse(reader["CountVote"].ToString());
+
+                    }
 
 
                 }

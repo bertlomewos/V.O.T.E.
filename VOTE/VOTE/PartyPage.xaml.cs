@@ -195,7 +195,7 @@ namespace VOTE
 
         private void Profile(object sender, RoutedEventArgs e)
         {
-
+                    
         }
 
         private void LegalCertificationButton_Click(object sender, RoutedEventArgs e)
