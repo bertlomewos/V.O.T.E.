@@ -119,6 +119,9 @@ namespace VOTE
             );
 
             party.assign();
+            LoginPage loginPage = new LoginPage();
+            loginPage.Show();
+            this.Close();
         }
 
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

@@ -132,9 +132,9 @@ namespace VOTE.Model
                                 membershipCriteria: reader["MembershipCriteria"].ToString(),
                                 partyInfo: reader["PartyInfo"].ToString(),
                                 membershipSize: int.Parse(reader["MembershipSize"].ToString()),
+                                votecount: int.Parse(reader["CountVote"].ToString()),
                                 electionParticipation: reader["ElectionParticipation"].ToString(),
-                                fundingSources: reader["FundingSources"].ToString(),
-                                legalCertification: null // Replace with actual data if available
+                                fundingSources: reader["FundingSources"].ToString()
                             );
                                 parties.Add(party);
                             }

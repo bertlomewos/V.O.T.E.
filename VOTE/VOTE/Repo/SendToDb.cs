@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace VOTE.Model
 {
@@ -42,7 +43,9 @@ namespace VOTE.Model
 
                     // Execute the insert and retrieve the last inserted ID
                     userId = Convert.ToInt32(insertCommand.ExecuteScalar());
-                    return userId;                 }
+                    MessageBox.Show(userId.ToString());
+                    return userId;                 
+                }
             }
             catch (Exception ex)
             {

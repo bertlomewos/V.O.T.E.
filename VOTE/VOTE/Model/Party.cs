@@ -18,6 +18,7 @@ namespace VOTE.Model
         public string MembershipCriteria { get; set; }
         public string PartyInfo { get; set; }
         public int MembershipSize { get; set; }
+        public int VoteCount { get; set; }
         public string ElectionParticipation { get; set; }
         public string FundingSources { get; set; }
         public byte[] LegalCertification { get; set; }
@@ -41,8 +42,8 @@ namespace VOTE.Model
             this.LegalCertification = legalCertification;
         }
         public Party(int id,string email, string password, string role, string PartyName, string partyAcronym, DateTime? foundedDate,
-string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize,
-string electionParticipation, string fundingSources, byte[] legalCertification)
+string headquartersLocation, string partyLeader, string membershipCriteria, string partyInfo, int membershipSize, int votecount,
+string electionParticipation, string fundingSources)
 : base(email, password, role)
         {
             this.ID = id;
@@ -54,9 +55,9 @@ string electionParticipation, string fundingSources, byte[] legalCertification)
             this.MembershipCriteria = membershipCriteria;
             this.PartyInfo = partyInfo;
             this.MembershipSize = membershipSize;
+            this.VoteCount = votecount;
             this.ElectionParticipation = electionParticipation;
             this.FundingSources = fundingSources;
-            this.LegalCertification = legalCertification;
         }
 
 

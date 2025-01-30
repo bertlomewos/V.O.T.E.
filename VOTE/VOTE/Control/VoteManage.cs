@@ -19,8 +19,6 @@ namespace VOTE.Model
                 {
                     conn.Open();
                     string checkVoterQuery = "SELECT COUNT(*) FROM votes WHERE VoterID = @VoterID";
-                    string query = "UPDATE parties SET CountVote = CountVote + 1 WHERE PartyID = @PartyID";
-                    string queryVote = "INSERT INTO votes (VoterID ,PartyID) VALUES (@VoterID, @PartyID);";
 
                     // First, check if the email already exists
                     MySqlCommand checkoterCommand = new MySqlCommand(checkVoterQuery, conn);
@@ -34,16 +32,19 @@ namespace VOTE.Model
                         MessageBox.Show("You have already voted");
                         return;
                     }
+                    string query = "UPDATE parties SET CountVote = CountVote + 1 WHERE PartyID = @PartyID";
 
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
                         command.Parameters.AddWithValue("@PartyID", partyID);
                         command.ExecuteNonQuery();
                     }
+                    string queryVote = "INSERT INTO votes (VoterID ,PartyID) VALUES (@VoterID, @PartyID);";
+
                     using (MySqlCommand insertCommand = new MySqlCommand(queryVote, conn))
                     {
-                        insertCommand.Parameters.AddWithValue("@PartyID", partyID);
                         insertCommand.Parameters.AddWithValue("@VoterID", GetFromDb.theuserId);
+                        insertCommand.Parameters.AddWithValue("@PartyID", partyID);
                         insertCommand.ExecuteNonQuery();
                     }
                 }

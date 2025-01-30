@@ -40,7 +40,6 @@
                     </Grid.ColumnDefinitions>
                     <!-- Menu Bar -->
                     <Menu VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2">
-                        <MenuItem Header="DashBoard" Height="25"/>
                         <MenuItem Header="LogOut" Height="25" Click="MenuItem_Click"/>
                     </Menu>
 
@@ -52,6 +51,7 @@
                         <!-- Info Panel on the Left Side -->
                         <Grid Name="InfoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="292">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -101,9 +101,8 @@
                             <Label Grid.Row="9" Grid.Column="0" Foreground="White" Content="Funding Resource:" FontWeight="Bold" Margin="0,5,0,5"/>
                             <Label x:Name="FundingSourcesLabel" Foreground="White" Grid.Row="9" Grid.Column="1" Content="[Funding Info]" Margin="0,5,0,5"/>
 
-                            <Label Grid.Row="10" Grid.Column="0" Foreground="White" Content="Legal Certification:" FontWeight="Bold" Margin="0,5,0,5"/>
-                            <Label x:Name="CretificationLabel" Foreground="White" Grid.Row="10" Grid.Column="1" Content="[Certification Info]" Margin="0,5,0,5"/>
-
+                            <Label Grid.Row="10" Grid.Column="0" Foreground="White" Content="Number of Vote:" FontWeight="Bold" Margin="0,5,0,5"/>
+                            <Label x:Name="VoteCount" Foreground="White" Grid.Row="10" Grid.Column="1" Content="[Certification Info]" Margin="0,5,0,5"/>
                         </Grid>
 
                         <StackPanel Name="EditPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Visibility="Hidden" Height="auto" Width="220">

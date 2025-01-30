@@ -50,9 +50,9 @@ namespace VOTE
                 MembershipCriteriaLabel.Content = gd.partyList.ElementAtOrDefault(5) ?? "N/A";
                 PartyInfoLabel.Content = gd.partyList.ElementAtOrDefault(6) ?? "N/A";
                 MembershipSizeLabel.Content = gd.partyList.ElementAtOrDefault(7) ?? "N/A";
-                ElectionParticipationLabel.Content = gd.partyList.ElementAtOrDefault(8) ?? "N/A";
-                FundingSourcesLabel.Content = gd.partyList.ElementAtOrDefault(9) ?? "N/A";
-                CretificationLabel.Content = gd.partyList.ElementAtOrDefault(10) ?? "N/A";
+                VoteCount.Content = gd.partyList.ElementAtOrDefault(8) ?? "N/A";
+                ElectionParticipationLabel.Content = gd.partyList.ElementAtOrDefault(9) ?? "N/A";
+                FundingSourcesLabel.Content = gd.partyList.ElementAtOrDefault(10) ?? "N/A";
 
                 // Populate textboxes for editing
                 PartyNameTextBox.Text = gd.partyList.ElementAtOrDefault(0) ?? string.Empty;
@@ -81,10 +81,6 @@ namespace VOTE
                     {
                         MessageBox.Show($"Error saving legal certification: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                }
-                else
-                {
-                    CretificationLabel.Content = "No Legal Certification Available";
                 }
             }
             else
@@ -220,19 +216,9 @@ namespace VOTE
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            MainPage mp = new MainPage();
-            mp.Show();
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            MainPage mp = new MainPage();
-            mp.Show();
+            LoginPage loginPage = new LoginPage();
+            loginPage.Show();
+            this.Close();
         }
     }
 }
